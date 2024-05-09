@@ -1,0 +1,91 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import TwinklingStars from '~/components/widgets/TwinklingStars.astro';
+import MeteorShower from '~/components/widgets/MeteorShower.astro';
+
+const metadata = {
+  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+
+  <!-- Light Mode: Particles -->
+  <div class='absolute inset-0 block dark:hidden'>
+    <div id='particles1' class='fixed inset-0'></div>
+    <div id='particles2' class='fixed inset-0'></div>
+    <div id='particles3' class='fixed inset-0'></div>
+  </div>
+
+  <!-- Dark Theme: Stars -->
+  <div class='absolute inset-0 bg-black hidden dark:block'>
+    <div id='stars1' class='fixed inset-0'></div>
+    <div id='stars2' class='fixed inset-0'></div>
+    <div id='stars3' class='fixed inset-0'></div>
+  </div>
+
+  <div id="galaxy" class="fixed inset-0">
+    <div class="hidden dark:block">
+      <TwinklingStars/>
+      <MeteorShower/>
+    </div>
+  </div>
+
+  <script is:inline src="/js/bg.js"></script>
+
+  <!-- Hero Widget ******************* -->
+
+  <!-- Note Widget ******************* -->
+
+  <!-- Features Widget *************** -->
+
+  <!-- Content Widget **************** -->
+
+  <!-- Content Widget **************** -->
+
+  <!-- Content Widget **************** -->
+
+  <!-- Steps Widget ****************** -->
+
+  <!-- Features2 Widget ************** -->
+
+  <!-- HighlightedPosts Widget ******* -->
+
+  <BlogLatestPosts
+    title="继续寻找更多Aldis的博客"
+    information={`记录极客人的日常心得，主要包含计算机技术、AI、区块链、Web3、元宇宙、编程技术、硬件设计、书法创作等。`}
+    user="aldis"
+  />
+
+  <BlogLatestPosts
+  title="看看更多有意思的Camila的记录"
+  information={`灵感人的有趣作品，主要包括摄影作品、人生灵感、生活分享、读书心得等。`}
+  user="camila"
+/>
+
+  <BlogLatestPosts
+    title="看看更多有创意的Seven的作品"
+    information={`记录航天工程师的天才作品，主要包括积木作品、编程代码、创意画画、天马行空等。
+                `}
+    user="seven"
+  />
+
+  <!-- FAQs Widget ******************* -->
+
+  <!-- Stats Widget ****************** -->
+
+  <!-- CallToAction Widget *********** -->
+
+</Layout>
