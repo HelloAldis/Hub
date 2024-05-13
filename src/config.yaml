@@ -11,7 +11,7 @@ metadata:
   title:
     default: BigBigDou
     template: '%s — BigBigDou'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+  description: "只有技术是不够的，这里是技术、科学、生活、有趣的聚集地，Aldis & Camila & Seven 联合出品"
   robots:
     index: true
     follow: true
