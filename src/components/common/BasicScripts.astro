@@ -94,6 +94,15 @@ import { UI } from 'astrowind:config';
         case 'mail':
           href = `mailto:?subject=%22${text}%22&body=${text}%20${url}`;
           break;
+        case 'weibo':
+          href = `https://service.weibo.com/share/share.php?url=${url}&title=${text}`;
+          break;
+        case 'qq':
+          href = `http://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${text}"`;
+          break;
+        case 'douban':
+          href = `http://shuo.douban.com/!service/share?href=${url}&name=${text}&starid=0&aid=0&style=11`;
+          break;
 
         default:
           return;

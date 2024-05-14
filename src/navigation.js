@@ -59,7 +59,8 @@ export const footerData = {
     { text: 'Privacy Policy', href: getCommonPagePermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'Mail', icon: 'tabler:mail', href: '#' },
+    { ariaLabel: 'Mail', icon: 'tabler:mail', href: 'mailto:307665930@qq.com' },
+    { ariaLabel: 'X', icon: 'tabler:x', href: 'https://twitter.com/Hello_Aldis' },
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/HelloAldis' },
   ],

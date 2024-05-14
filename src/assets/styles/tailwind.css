@@ -134,3 +134,7 @@
 #meteors .shower.ul {
   @apply rotate-315;
 }
+
+.aw-link-active {
+  @apply text-primary;
+}

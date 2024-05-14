@@ -1,6 +1,6 @@
 site:
   name: BigBigDou
-  site: 'https://astrowind.vercel.app'
+  site: 'https://bigbigdou.pages.dev'
   base: '/'
   trailingSlash: false
 
@@ -23,8 +23,8 @@ metadata:
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@Hello_Aldis'
+    site: '@Hello_Aldis'
     cardType: summary_large_image
 
 i18n:
