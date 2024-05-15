@@ -1,9 +1,10 @@
 ---
 import { SITE } from 'astrowind:config';
+import Image from '~/components/common/Image.astro';
 ---
 
+<Image src="~/assets/images/logo800.png" alt={ SITE?.name } class="w-5 h-5" width={40} height={40} layout="fixed"/>
 <span
   class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
->
-  🚀 {SITE?.name}
+> { SITE?.name }
 </span>
