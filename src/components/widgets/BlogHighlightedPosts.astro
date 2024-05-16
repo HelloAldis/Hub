@@ -58,7 +58,7 @@ const posts = APP_BLOG.isEnabled ? await findPostsByIds(postIds, user) : [];
         {information && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={information} />}
       </div>
 
-      <Grid posts={posts} />
+      <Grid posts={posts} user={user}/>
     </WidgetWrapper>
   ) : (
     <Fragment />
