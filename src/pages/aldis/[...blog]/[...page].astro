@@ -12,7 +12,7 @@ import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
 export const prerender = true;
 
 export const getStaticPaths = (async ({ paginate }) => {
-  return await getStaticPathsBlogList({ paginate}, 'aldis');
+  return await getStaticPathsBlogList({ paginate }, 'aldis');
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -40,7 +40,7 @@ const metadata = {
     <Headline
       subtitle="Alids 博客专栏，记录极客人的日常心得，主要包含计算机技术、AI、区块链、Web3、元宇宙、编程技术、硬件设计、书法创作等。"
     >
-    💻 🤣 Aldis's Blog
+      💻 🤣 Aldis's Blog
     </Headline>
     <BlogList posts={page.data} user="aldis" />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />

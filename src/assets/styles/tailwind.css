@@ -95,7 +95,7 @@
  * TWINKLE STARS
  */
 
- #twinkle-star.template {
+#twinkle-star.template {
   @apply absolute left-full; /* hide offscreen */
 }
 
@@ -107,8 +107,8 @@
  * Meteors
  */
 
- #meteors .shower {
-  @apply absolute inset-0 top-0;;
+#meteors .shower {
+  @apply absolute inset-0 top-0;
   @apply left-1/2 -translate-x-1/2;
   @apply w-screen aspect-square;
 }

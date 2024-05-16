@@ -132,7 +132,6 @@ export const blogPostsPerPage = APP_BLOG?.postsPerPage;
 
 /** */
 export const fetchPosts = async (user: string): Promise<Array<Post>> => {
-
   if (user === 'seven') {
     if (_sevenPosts) {
       return _sevenPosts;

@@ -4,14 +4,14 @@ site:
   base: '/'
   trailingSlash: false
 
-  googleSiteVerificationId: 
+  googleSiteVerificationId:
 
 # Default SEO metadata
 metadata:
   title:
     default: BigBigDou
     template: '%s — BigBigDou'
-  description: "只有技术是不够的，这里有各种计算技术包括编程、AI人工智能、Web3、区块链、元宇宙、数据要素、还有科学实验、生活记录、有趣的手工聚集地，Aldis & Camila & Seven 联合出品"
+  description: '只有技术是不够的，这里有各种计算技术包括编程、AI人工智能、Web3、区块链、元宇宙、数据要素、还有科学实验、生活记录、有趣的手工聚集地，Aldis & Camila & Seven 联合出品'
   robots:
     index: true
     follow: true

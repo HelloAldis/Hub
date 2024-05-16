@@ -21,30 +21,29 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-
   <!-- Light Mode: Particles -->
-  <div class='absolute inset-0 block dark:hidden'>
-    <div id='particles1' class='fixed inset-0'></div>
-    <div id='particles2' class='fixed inset-0'></div>
-    <div id='particles3' class='fixed inset-0'></div>
+  <div class="absolute inset-0 block dark:hidden">
+    <div id="particles1" class="fixed inset-0"></div>
+    <div id="particles2" class="fixed inset-0"></div>
+    <div id="particles3" class="fixed inset-0"></div>
   </div>
 
   <!-- Dark Theme: Stars -->
-  <div class='absolute inset-0 bg-black hidden dark:block'>
-    <div id='stars1' class='fixed inset-0'></div>
-    <div id='stars2' class='fixed inset-0'></div>
-    <div id='stars3' class='fixed inset-0'></div>
+  <div class="absolute inset-0 bg-black hidden dark:block">
+    <div id="stars1" class="fixed inset-0"></div>
+    <div id="stars2" class="fixed inset-0"></div>
+    <div id="stars3" class="fixed inset-0"></div>
   </div>
 
   <div id="galaxy" class="fixed inset-0">
     <div class="hidden dark:block">
-      <TwinklingStars/>
-      <MeteorShower/>
+      <TwinklingStars />
+      <MeteorShower />
     </div>
   </div>
 
   <script is:inline src="/js/bg.js"></script>
-  
+
   <!-- Hero Widget ******************* -->
   <script is:inline src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
   <TypeText />
@@ -71,10 +70,10 @@ const metadata = {
   />
 
   <BlogLatestPosts
-  title="看看更多有意思的Camila的记录"
-  information={`灵感人的有趣作品，主要包括摄影作品、人生灵感、生活分享、读书心得等。`}
-  user="camila"
-/>
+    title="看看更多有意思的Camila的记录"
+    information={`灵感人的有趣作品，主要包括摄影作品、人生灵感、生活分享、读书心得等。`}
+    user="camila"
+  />
 
   <BlogLatestPosts
     title="看看更多有创意的Seven的作品"
@@ -88,5 +87,4 @@ const metadata = {
   <!-- Stats Widget ****************** -->
 
   <!-- CallToAction Widget *********** -->
-
 </Layout>

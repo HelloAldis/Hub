@@ -18,15 +18,14 @@ export const headerData = {
       text: 'Seven',
       href: getBlogPermalink('seven'),
     },
-  ]
+  ],
 };
 
 export const footerData = {
   links: [
     {
       title: 'Home',
-      links: [
-      ],
+      links: [],
     },
     {
       title: 'Aldis',

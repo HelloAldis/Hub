@@ -65,8 +65,8 @@ const postCollection = defineCollection({
 });
 
 export const collections = {
-  'post': postCollection,
-  'aldis': postCollection,
-  'camila': postCollection,
-  'seven': postCollection,
+  post: postCollection,
+  aldis: postCollection,
+  camila: postCollection,
+  seven: postCollection,
 };

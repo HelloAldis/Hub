@@ -37,10 +37,8 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
-    <Headline
-      subtitle="Seven 博客专栏，记录航天工程师的天才作品，主要包括积木作品、编程代码、创意画画、天马行空等"
-    >
-    🚀 😁 Seven's Blog
+    <Headline subtitle="Seven 博客专栏，记录航天工程师的天才作品，主要包括积木作品、编程代码、创意画画、天马行空等">
+      🚀 😁 Seven's Blog
     </Headline>
     <BlogList posts={page.data} user="seven" />
     <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />

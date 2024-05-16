@@ -84,13 +84,14 @@ export const getHomePermalink = (): string => getPermalink('/');
 /** */
 export const getBlogPermalink = (user: string): string => getPermalink(user + '/blog');
 
-export const getBlogPostPermalink = (slug: string, user: string): string => getPermalink(user + '/' + slug, 'post')
+export const getBlogPostPermalink = (slug: string, user: string): string => getPermalink(user + '/' + slug, 'post');
 
-export const getBlogCategoryPermalink = (slug: string, user: string): string => getPermalink(user + '/category/' + slug, 'category')
+export const getBlogCategoryPermalink = (slug: string, user: string): string =>
+  getPermalink(user + '/category/' + slug, 'category');
 
-export const getBlogTagPermalink = (slug: string, user: string): string => getPermalink(user + '/tag/' + slug, 'tag')
+export const getBlogTagPermalink = (slug: string, user: string): string => getPermalink(user + '/tag/' + slug, 'tag');
 
-export const getCommonPagePermalink = (slug = ''): string => getPermalink(slug, 'page')
+export const getCommonPagePermalink = (slug = ''): string => getPermalink(slug, 'page');
 
 /** */
 export const getAsset = (path: string): string =>

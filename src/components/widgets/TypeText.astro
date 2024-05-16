@@ -2,28 +2,25 @@
 
 ---
 
-<section class="relative not-prose ">
+<section class="relative not-prose">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 text-md text-center font-medium">
-    <span id="type-text" class="font-bold">
-       </span> 
+    <span id="type-text" class="font-bold"> </span>
   </div>
 </section>
 
 <script is:inline>
+  var app = document.getElementById('type-text');
 
-var app = document.getElementById('type-text');
-
-var typewriter = new Typewriter(app, {
-  strings: ['只有技术是不够的！<i> —— 来自Aldis</i>',
-    'You can or can not，you are right！<i>—— From Camila</i>',
-    '找到正确的方法，开始做，保持专注！<i>—— 来自Seven</i>',
-    '凡事豫则立，不豫则废！<i>—— 来自《礼记·中庸》</i>'],
-  loop: true,
-  delay: 100,
-  autoStart: true,
-  cursor: "▂"
-});
-
-
+  var typewriter = new Typewriter(app, {
+    strings: [
+      '只有技术是不够的！<i> —— 来自Aldis</i>',
+      'You can or can not，you are right！<i>—— From Camila</i>',
+      '找到正确的方法，开始做，保持专注！<i>—— 来自Seven</i>',
+      '凡事豫则立，不豫则废！<i>—— 来自《礼记·中庸》</i>',
+    ],
+    loop: true,
+    delay: 100,
+    autoStart: true,
+    cursor: '▂',
+  });
 </script>
-
