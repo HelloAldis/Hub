@@ -1,13 +1,4 @@
----
-import { GoogleAnalytics } from '@astrolib/analytics';
-import { ANALYTICS } from 'astrowind:config';
----
 
-{
-  ANALYTICS?.vendors?.googleAnalytics?.id ? (
-    <GoogleAnalytics
-      id={String(ANALYTICS.vendors.googleAnalytics.id)}
-      partytown={ANALYTICS?.vendors?.googleAnalytics?.partytown}
-    />
-  ) : null
-}
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ba76d53506d146219331e8918c8a396a"}'></script>
+<!-- End Cloudflare Web Analytics -->
