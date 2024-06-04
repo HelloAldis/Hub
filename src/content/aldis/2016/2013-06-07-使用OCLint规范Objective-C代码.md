@@ -90,7 +90,7 @@ rm xcodebuild.log
 open ./oclint.html
 ```
 生成的报表类似：
-{% asset_img oclint-result.png OCLint报表 %}
+![](~/assets/images/aldis/2016/2013-06-07/oclint-result.png)
 
 ## 更多关于OCLint的知识了参考
 * [OCLint官网](http://docs.oclint.org/en/stable/index.html)

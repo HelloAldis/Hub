@@ -19,13 +19,13 @@ tags:
 
 使用Analyze
 
-{% asset_img analyze.png 使用Analyze %}
+![](~/assets/images/aldis/2016/2013-05-15/analyze.png)
 
 生成的结果
 
 <!-- more -->
 
-{% asset_img analyze-result.png 结果 %}
+![](~/assets/images/aldis/2016/2013-05-15/analyze-result.png)
 
 ⚠️注意几点
 * 建议鼠标反键选择View By File，这样可以按文件来分开问题方便追踪

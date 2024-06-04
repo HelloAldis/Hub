@@ -14,7 +14,7 @@ tags:
 动画不和谐，实现过于复杂等等问题。 现在我分享的一个简单易懂又比较完美的方法。
 AutoScrollView类自动的实现了这一特性，要集成这个功能，只要在xib中将ScrolView的Customer class设置成AutoScrollView就可以了，非常简单容易。
 
-{% asset_img 1.png %}
+![](~/assets/images/aldis/2016/2013-02-20/1.png)
 
 下面是AutoScrollView源代码
 
@@ -156,5 +156,5 @@ AutoScrollView类自动的实现了这一特性，要集成这个功能，只要
 ```
 
 效果
-{% asset_img 2.png %}
+![](~/assets/images/aldis/2016/2013-02-20/2.png)
 

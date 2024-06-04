@@ -17,7 +17,7 @@ Objective-C中，类的实例化变量的范围有@private、@protected、@publi
 |@public|作用范围最大，在任何地方|
 
 下面是官方的图：
-{% asset_img scope.png %}
+![](~/assets/images/aldis/2016/2012-10-12/scope.png)
 
 具体的可以参考：[http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocDefiningClasses.html#//apple_ref/doc/uid/TP30001163-CH12-SW1](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjectiveC/Chapters/ocDefiningClasses.html#//apple_ref/doc/uid/TP30001163-CH12-SW1)
 
@@ -73,7 +73,7 @@ Objective-C中，类的实例化变量的范围有@private、@protected、@publi
 ```
 
 如果我们在Worker中调用Boss中的私有变量age，会报错：
-{% asset_img err1.png %}
+![](~/assets/images/aldis/2016/2012-10-12/err1.png)
 
 但是调用job是没有问题的。
 下面在其他类中调用Worker类：
@@ -85,8 +85,9 @@ NSLog(@">>>=%@",[ceo description]);
 ```
 
 运行结果：
-{% asset_img result1.png %}
+![](~/assets/images/aldis/2016/2012-10-12/result1.png)
 
 但是调用protected的属性会报错：
-{% asset_img err2.png %}
+![](~/assets/images/aldis/2016/2012-10-12/err2.png)
+
 所以当一些比较重要的属性，不能随便更改的时候，要用private，这样避免其他继承类修改此属性。

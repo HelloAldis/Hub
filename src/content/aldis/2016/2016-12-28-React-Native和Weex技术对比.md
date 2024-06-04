@@ -1,34 +1,34 @@
 ---
+author: Alids
 title: React Native和Weex技术对比
+excerpt: React Native 和 Weex是比较流行的新一代高体验的跨平台开发框架。这个文档可以仔细分析它们之间的区别，帮助技术人员作出合适的选择。
 publishDate:  2016-12-28 14:43:06
+image: ~/assets/images/aldis/2016/cover/RnWeex.png
 category: iOS
 tags:
   - ReactNative
   - Weex
 ---
 
-# React Native 和 Weex 技术对比
-
 React Native 和 Weex是比较流行的新一代高体验的跨平台开发框架。这个文档可以仔细分析它们之间的区别，帮助技术人员作出合适的选择。
 
 ## 目录
-- [React Native 和 Weex 技术对比](#react-native-和-weex-技术对比)
-  - [目录](#目录)
-  - [基本简介](#基本简介)
-  - [社区对比](#社区对比)
-  - [内置组件对比](#内置组件对比)
-    - [React Native和Weex共有组件](#react-native和weex共有组件)
-    - [Weex特有UI组件](#weex特有ui组件)
-    - [React Native特有UI组件](#react-native特有ui组件)
-  - [Hello world对比](#hello-world对比)
-    - [React Native Hello world](#react-native-hello-world)
-    - [Weex Hello world](#weex-hello-world)
-  - [Javascript bundle对比](#javascript-bundle对比)
-    - [React Native bundle](#react-native-bundle)
-    - [Weex Hello bundle](#weex-hello-bundle)
-  - [总结](#总结)
-    - [React Native优势总结](#react-native优势总结)
-    - [Weex优势总结](#weex优势总结)
+- [目录](#目录)
+- [基本简介](#基本简介)
+- [社区对比](#社区对比)
+- [内置组件对比](#内置组件对比)
+  - [React Native和Weex共有组件](#react-native和weex共有组件)
+  - [Weex特有UI组件](#weex特有ui组件)
+  - [React Native特有UI组件](#react-native特有ui组件)
+- [Hello world对比](#hello-world对比)
+  - [React Native Hello world](#react-native-hello-world)
+  - [Weex Hello world](#weex-hello-world)
+- [Javascript bundle对比](#javascript-bundle对比)
+  - [React Native bundle](#react-native-bundle)
+  - [Weex Hello bundle](#weex-hello-bundle)
+- [总结](#总结)
+  - [React Native优势总结](#react-native优势总结)
+  - [Weex优势总结](#weex优势总结)
 
 ## 基本简介
 

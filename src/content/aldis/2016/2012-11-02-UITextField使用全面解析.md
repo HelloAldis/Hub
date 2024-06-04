@@ -237,7 +237,8 @@ UIKeyboardDidShowNotification    //键盘显示之后发送
 UIKeyboardWillHideNotification   //键盘隐藏之前发送
 UIKeyboardDidHideNotification    //键盘隐藏之后发送
 
-{% asset_img 1.png %}
+![](~/assets/images/aldis/2016/2012-11-02/1.png)
+
 1. Text ：设置文本框的默认文本。
 2. Placeholder ： 可以在文本框中显示灰色的字，用于提示用户应该在这个文本框输入什么内容。当这个文本框中输入了数据时，用于提示的灰色的字将会自动消失。
 3. Background ：
@@ -267,7 +268,8 @@ UIKeyboardDidHideNotification    //键盘隐藏之后发送
 6.  Auto-enable Return Key ： 如选择此项，则只有至少在文本框输入一个字符后键盘的返回键才有效。
 7.  Secure ： 当你的文本框用作密码输入框时，可以选择这个选项，此时，字符显示为星号。
 
-{% asset_img 2.png %}
+![](~/assets/images/aldis/2016/2012-11-02/2.png)
+
 1. Alignment Horizontal 水平对齐方式
 2. Alignment Vertical 垂直对齐方式
 3. 用于返回一个BOOL值  输入框是否 Selected(选中) Enabled(可用) Highlighted(高亮)

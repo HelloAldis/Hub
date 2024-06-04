@@ -87,7 +87,7 @@ MyLib
 
 CocoaPods会自动打开工程，如图
 
-{% asset_img pod-struct.png %}
+![](~/assets/images/aldis/2016/2016-04-03/pod-struct.png)
 
 1. Pod库的metadata，你可以直接在这里编辑README和Podspec
 2. 例子工程如果你的项目有的话
