@@ -8,11 +8,12 @@ import PaginationNew from '~/components/blog/PaginationNew.astro';
 // import PostTags from "~/components/blog/Tags.astro";
 
 import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
+import GalleryList from '~/components/blog/GalleryList.astro';
 
 export const prerender = true;
 
 export const getStaticPaths = (async ({ paginate }) => {
-  return await getStaticPathsBlogList({ paginate }, 'camila');
+  return await getStaticPathsBlogList({ paginate }, 'camila', 12);
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
@@ -42,7 +43,8 @@ const metadata = {
     <Headline subtitle="Camila 博客专栏，记录灵感人的有趣作品，主要包括摄影作品、人生灵感、生活分享、读书心得等.">
       📷 😎 Camila's Blog
     </Headline>
-    <BlogList posts={page.data} user="camila" />
+    <!-- <BlogList posts={page.data} user="camila" /> -->
+    <GalleryList posts={page.data} user="camila" />
     <PaginationNew
       currentPage={currentPage}
       lastPage={totalPages}

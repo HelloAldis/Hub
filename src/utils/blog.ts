@@ -193,11 +193,11 @@ export const findLatestPosts = async ({ count }: { count?: number }, user: strin
 };
 
 /** */
-export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateFunction }, user: string) => {
+export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateFunction }, user: string, size = blogPostsPerPage) => {
   if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
   return paginate(await fetchPosts(user), {
     params: { blog: BLOG_BASE || undefined },
-    pageSize: blogPostsPerPage,
+    pageSize: size,
   });
 };
 

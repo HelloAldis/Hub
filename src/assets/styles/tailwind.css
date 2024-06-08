@@ -138,3 +138,10 @@
 .aw-link-active {
   @apply text-primary;
 }
+
+.glass {
+	background: rgba(57, 56, 56, 0.52);
+	backdrop-filter: blur(13px) saturate(150%);
+	-webkit-backdrop-filter: blur(13px) saturate(150%);
+	z-index: -1;
+}
