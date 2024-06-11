@@ -5,7 +5,7 @@ import { blogCategoryRobots, getStaticPathsBlogCategory } from '~/utils/blog';
 import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
-import Pagination from '~/components/blog/Pagination.astro';
+import PaginationNew from '~/components/blog/PaginationNew.astro';
 
 export const prerender = true;
 
@@ -18,6 +18,8 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths> & { category: Record
 const { page, category } = Astro.props as Props;
 
 const currentPage = page.currentPage ?? 1;
+const totalPages = Math.ceil(page.total / page.size);
+const basePath = "/seven/blog/";
 
 const metadata = {
   title: `Category '${category.title}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
@@ -32,6 +34,13 @@ const metadata = {
   <section class="px-4 md:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
     <Headline>{category.title}</Headline>
     <BlogList posts={page.data} user="seven" />
-    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+    <PaginationNew
+      currentPage={currentPage}
+      lastPage={totalPages}
+      urlPrev={page.url.prev}
+      urlNext={page.url.next}
+      basePath={basePath}
+      maxDisplayedPages={4}
+    />
   </section>
 </Layout>

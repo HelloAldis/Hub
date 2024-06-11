@@ -213,7 +213,7 @@ export const getStaticPathsBlogPost = async (user: string) => {
 };
 
 /** */
-export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: PaginateFunction }, user: string) => {
+export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: PaginateFunction }, user: string, size = blogPostsPerPage) => {
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts(user);
@@ -227,7 +227,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
       posts.filter((post) => post.category?.slug && categorySlug === post.category?.slug),
       {
         params: { category: categorySlug, blog: CATEGORY_BASE || undefined },
-        pageSize: blogPostsPerPage,
+        pageSize: size,
         props: { category: categories[categorySlug] },
       }
     )
@@ -235,7 +235,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
 };
 
 /** */
-export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFunction }, user: string) => {
+export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFunction }, user: string, size = blogPostsPerPage) => {
   if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
 
   const posts = await fetchPosts(user);
@@ -252,7 +252,7 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
       posts.filter((post) => Array.isArray(post.tags) && post.tags.find((elem) => elem.slug === tagSlug)),
       {
         params: { tag: tagSlug, blog: TAG_BASE || undefined },
-        pageSize: blogPostsPerPage,
+        pageSize: size,
         props: { tag: tags[tagSlug] },
       }
     )
