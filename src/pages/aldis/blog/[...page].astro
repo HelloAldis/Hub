@@ -5,9 +5,11 @@ import Layout from '~/layouts/PageLayout.astro';
 import BlogList from '~/components/blog/List.astro';
 import Headline from '~/components/blog/Headline.astro';
 import PaginationNew from '~/components/blog/PaginationNew.astro';
+import Button from '~/components/ui/Button.astro';
 // import PostTags from "~/components/blog/Tags.astro";
 
 import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
+import Button from '~/components/ui/Button.astro';
 
 export const prerender = true;
 
@@ -38,12 +40,20 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">
+  <section class="px-6 sm:px-6 py-8 sm:py-10 lg:py-12 mx-auto max-w-4xl">
     <Headline
       subtitle="Alids 博客专栏，记录极客人的日常心得，主要包含计算机技术、AI、区块链、Web3、元宇宙、编程技术、硬件设计、书法创作等。"
     >
       💻 🤣 Aldis's Blog
     </Headline>
+    <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 pt-0 pb-8">
+      <div class="flex w-full sm:w-auto">
+        <Button variant="primary" text="Categories" href="/aldis/category" icon="tabler:category" class="w-full sm:mb-0" />
+      </div>
+      <div class="flex w-full sm:w-auto">
+        <Button variant="secondary" text="Tags" href="/aldis/tag" icon="tabler:tag" class="w-full sm:mb-0" />
+      </div>
+    </div>
     <BlogList posts={page.data} user="aldis" />
     <PaginationNew
       currentPage={currentPage}

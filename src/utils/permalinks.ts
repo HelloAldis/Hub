@@ -84,7 +84,7 @@ export const getHomePermalink = (): string => getPermalink('/');
 /** */
 export const getBlogPermalink = (user: string): string => getPermalink(user + '/blog');
 
-export const getBlogPostPermalink = (slug: string, user: string): string => getPermalink(user + '/' + slug, 'post');
+export const getBlogPostPermalink = (slug: string, user: string): string => getPermalink(user + '/blog/' + slug, 'post');
 
 export const getBlogCategoryPermalink = (slug: string, user: string): string =>
   getPermalink(user + '/category/' + slug, 'category');

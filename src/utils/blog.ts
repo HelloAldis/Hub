@@ -295,3 +295,29 @@ export async function getRelatedPosts(originalPost: Post, user: string, maxResul
 
   return selectedPosts;
 }
+
+export const getTags = async (user: string) => {
+	const allPosts = await fetchPosts(user);
+	const tagMap = new Map();
+	allPosts.forEach((post) => {
+    if(post.tags) {
+      post.tags.forEach((tag) => {
+        tagMap.set(tag.slug, tag.title);
+      })
+    }
+	});
+
+	return tagMap;
+}
+
+export const getCategories = async (user: string) => {
+	const allPosts = await fetchPosts(user);
+	const categories = new Map();
+	allPosts.forEach((post) => {
+    if (post.category) {
+      categories.set(post.category.slug, post.category.title);
+    }
+	});
+
+	return Array.from(categories);
+}
