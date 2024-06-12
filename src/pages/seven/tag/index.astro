@@ -1,0 +1,32 @@
+---
+import { blogTagRobots, getTags } from '~/utils/blog';
+
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/blog/Headline.astro';
+
+const tags = await getTags("seven");
+
+const metadata = {
+  title: "Seven's Showcase Tags",
+  robots: {
+    index: blogTagRobots?.index,
+    follow: blogTagRobots?.follow,
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <Headline>Seven's Showcase Tags</Headline>
+	<div class='flex justify-center flex-wrap gap-4 pb-8'>
+		{
+			 Array.from(tags, ([slug, title]) => (
+				<a
+					href={`/seven/tag/${slug}`}
+					class='inline-block bg-gray-200  rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
+				>
+					#{title}
+				</a>
+			))
+		}
+	</div>
+</Layout>

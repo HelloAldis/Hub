@@ -1,0 +1,31 @@
+---
+import { blogTagRobots, getCategories } from '~/utils/blog';
+
+import Layout from '~/layouts/PageLayout.astro';
+import Headline from '~/components/blog/Headline.astro';
+
+const categories = await getCategories("camila");
+const metadata = {
+  title: "Camila's Image Categories",
+  robots: {
+    index: blogTagRobots?.index,
+    follow: blogTagRobots?.follow,
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <Headline>Camila's Image Categories</Headline>
+	<div class='flex justify-center flex-wrap gap-4 pb-8'>
+		{
+			 Array.from(categories, ([slug, title]) => (
+				<a
+					href={`/camila/category/${slug}`}
+					class='inline-block bg-gray-200  rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
+				>
+					#{title}
+				</a>
+			))
+		}
+	</div>
+</Layout>

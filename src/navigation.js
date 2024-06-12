@@ -34,7 +34,7 @@ export const footerData = {
         { text: 'Web3', href: '/aldis/category/web3' },
         { text: '元宇宙', href: '#' },
         { text: '硬件', href: '#' },
-        { text: '编程随感', href: '/aldis/category/bian1-cheng2-sui2-gan3' },
+        { text: '编程思想', href: '/aldis/category/bian1-cheng2-si1-xiang3' },
       ],
     },
     {
@@ -48,8 +48,8 @@ export const footerData = {
     {
       title: 'Seven',
       links: [
-        { text: '小积木', href: '/seven/category/xiao3-ji1-mu4' },
-        { text: '编程积木', href: '/seven/category/bian1-cheng2-ji1-mu4' },
+        { text: '积木', href: '/seven/category/ji1-mu4' },
+        { text: '编程', href: '/seven/category/bian1-cheng2' },
       ],
     },
   ],
