@@ -1,6 +1,5 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { ClipboardCopy } from '@astro-github-elements/clipboard-copy';
 
 export interface Props {
   text: string;
@@ -13,7 +12,6 @@ const { text, url, class: className = 'inline-block' } = Astro.props;
 
 <div class={className}>
   <span class="align-super font-bold text-slate-500 dark:text-slate-400">Share:</span>
-  <ClipboardCopy value={url + "  " + text}>
   <button
     class="ml-2 rtl:ml-0 rtl:mr-2"
     title="Copy then Share"
@@ -22,10 +20,13 @@ const { text, url, class: className = 'inline-block' } = Astro.props;
     data-aw-text={text}
     ><Icon
       name="tabler:copy"
-      class="w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300"
+      class="copy-icon w-6 h-6 text-gray-400 dark:text-slate-500 hover:text-black dark:hover:text-slate-300"
+    />
+    <Icon
+      name="tabler:copy-check"
+      class="copy-check-icon hidden w-6 h-6 text-green-400"
     />
   </button>
-</ClipboardCopy>
   <button
     class="ml-2 rtl:ml-0 rtl:mr-2"
     title="Weibo Share"

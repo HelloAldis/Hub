@@ -76,7 +76,6 @@ import { UI } from 'astrowind:config';
       const network = elem.getAttribute('data-aw-social-share');
       const url = encodeURIComponent(elem.getAttribute('data-aw-url'));
       const text = encodeURIComponent(elem.getAttribute('data-aw-text'));
-
       let href;
       switch (network) {
         case 'facebook':
@@ -100,7 +99,18 @@ import { UI } from 'astrowind:config';
         case 'qq':
           href = `http://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${text}"`;
           break;
+        case 'copy':
+          navigator.clipboard.writeText(elem.getAttribute('data-aw-url') + "  " + elem.getAttribute('data-aw-text'))
+          const copy = elem.querySelector('.copy-icon');
+			    const check = elem.querySelector('.copy-check-icon');
+          check.classList.remove('hidden');
+          copy.classList.add('hidden');
+          setTimeout(() => {
+              check.classList.add('hidden');
+              copy.classList.remove('hidden');
+          }, 2000);
 
+          return;
         default:
           return;
       }

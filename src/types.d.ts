@@ -37,6 +37,7 @@ export interface Post {
   draft?: boolean;
 
   /**  */
+  headings: MarkdownHeading[];
   Content?: AstroComponentFactory;
   content?: string;
 

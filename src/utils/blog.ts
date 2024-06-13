@@ -93,6 +93,7 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
 
     metadata,
 
+    headings: headings,
     Content: Content,
     // or 'content' in case you consume from API
 
