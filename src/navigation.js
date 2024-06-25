@@ -30,7 +30,7 @@ export const footerData = {
     {
       title: 'Aldis',
       links: [
-        { text: 'AI', href: '#' },
+        { text: 'AI', href: '/aldis/category/ai' },
         { text: 'Web3', href: '/aldis/category/web3' },
         { text: '元宇宙', href: '#' },
         { text: '硬件', href: '#' },
