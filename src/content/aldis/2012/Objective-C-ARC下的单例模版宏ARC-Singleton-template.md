@@ -1,6 +1,6 @@
 ---
 title: Objective-C ARC下的单例模版宏ARC Singleton template
-publishDate:  2012-12-07 02:19:50
+publishDate: 2012-12-07 02:19:50
 image: ~/assets/images/aldis/2012/12.png
 category: 编程思想
 tags:
@@ -14,6 +14,7 @@ tags:
 
 写法
 ARCSingletonTemplate.h
+
 ```objc
 #define SYNTHESIZE_SINGLETON_FOR_HEADER(className) \
 \
@@ -30,12 +31,14 @@ ARCSingletonTemplate.h
     return shared##className; \
 }
 ```
+
 基本是使用了 GCD中的dispatch_once接收一个在应用生命周期只会被调用一次的代码块，而且它还是线程安全的
 
 <!-- more -->
 
 用法
 AppPreference.h
+
 ```objc
 #import <Foundation/Foundation.h>
 #import "ARCSingletonTemplate.h"

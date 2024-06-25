@@ -1,6 +1,6 @@
 ---
 title: Robocode Tank AI实例
-publishDate:  2013-01-31 23:51:55
+publishDate: 2013-01-31 23:51:55
 image: ~/assets/images/aldis/2013/2.png
 category: 编程思想
 tags:
@@ -48,7 +48,7 @@ public class Aldis extends AdvancedRobot {
     private static final double WALL_AVOID_INTERVAL = 10;
     private static final double WALL_AVOID_FACTORS = 20;
     private static final double WALL_AVOID_DISTANCE = (WALL_AVOID_INTERVAL * WALL_AVOID_FACTORS);
-    
+
     public double calculateBearingToXYRadians(double sourceX, double sourceY,
             double sourceHeading, double targetX, double targetY) {
                 return normalizeRelativeAngleRadians(
@@ -72,7 +72,7 @@ public class Aldis extends AdvancedRobot {
                 return trimmedAngle;
             }
         }
-        
+
     private double adjustHeadingForWalls(double heading) {
         double fieldHeight = getBattleFieldHeight();
         double fieldWidth = getBattleFieldWidth();

@@ -1,12 +1,11 @@
 ---
 title: Java单例模式
-publishDate:  2009-09-12 16:29:00
+publishDate: 2009-09-12 16:29:00
 image: ~/assets/images/aldis/2009/3.png
 category: 编程思想
-tags: 
+tags:
   - 单例模式
   - Java
-
 ---
 
 1. 构造方法私有。
@@ -16,14 +15,13 @@ tags:
 
 ```java
 class Single {
-   
+
     private final static Single single = new Single();
-   
+
     private void single(){}
-   
+
     public static Single getInstance() {
         return single;
     }
 }
 ```
-

@@ -1,6 +1,6 @@
 ---
 title: MFC中CString类与其他类型的转换
-publishDate:  2009-09-24 18:41:00
+publishDate: 2009-09-24 18:41:00
 image: ~/assets/images/aldis/2009/6.png
 category: 编程思想
 tags:
@@ -12,7 +12,7 @@ tags:
 MFC数据类型转换标准库std的string 和MFC类库CString之间的转换
 
 ```cpp
-1 string to CString   
+1 string to CString
 
    CString.format("%s",string.c_str());
 

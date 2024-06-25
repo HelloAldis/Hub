@@ -100,14 +100,14 @@ import { UI } from 'astrowind:config';
           href = `http://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${text}"`;
           break;
         case 'copy':
-          navigator.clipboard.writeText(elem.getAttribute('data-aw-url') + "  " + elem.getAttribute('data-aw-text'))
+          navigator.clipboard.writeText(elem.getAttribute('data-aw-url') + '  ' + elem.getAttribute('data-aw-text'));
           const copy = elem.querySelector('.copy-icon');
-			    const check = elem.querySelector('.copy-check-icon');
+          const check = elem.querySelector('.copy-check-icon');
           check.classList.remove('hidden');
           copy.classList.add('hidden');
           setTimeout(() => {
-              check.classList.add('hidden');
-              copy.classList.remove('hidden');
+            check.classList.add('hidden');
+            copy.classList.remove('hidden');
           }, 2000);
 
           return;

@@ -1,6 +1,6 @@
 ---
 title: UILable使用全面解析
-publishDate:  2012-11-06 00:35:17
+publishDate: 2012-11-06 00:35:17
 image: ~/assets/images/aldis/2012/32.png
 category: 编程思想
 tags:
@@ -58,14 +58,14 @@ tags:
   label.lineBreakMode = UILineBreakModeTailTruncation;
 
   /*
-    typedef enum { 
+    typedef enum {
 
-        UILineBreakModeWordWrap = 0,    以空格为边界，保留整个单词  默认方式      
-        UILineBreakModeCharacterWrap,   保留整个字符 
+        UILineBreakModeWordWrap = 0,    以空格为边界，保留整个单词  默认方式
+        UILineBreakModeCharacterWrap,   保留整个字符
         UILineBreakModeClip,            到边界为止
         UILineBreakModeHeadTruncation,  省略开始，以....代替
         UILineBreakModeTailTruncation,  省略结尾，以....代替
-        UILineBreakModeMiddleTruncation,省略中间，以....代替         
+        UILineBreakModeMiddleTruncation,省略中间，以....代替
 
     } UILineBreakMode;
     */
@@ -105,21 +105,21 @@ tags:
 
   UILabel自适应高度和自动换行
 
-  //初始化label  
-  UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(0,0,0,0)];  
+  //初始化label
+  UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake(0,0,0,0)];
 
-  //设置自动行数与字符换行  
-  [label setNumberOfLines:0];  
-  label.lineBreakMode = UILineBreakModeWordWrap;   
+  //设置自动行数与字符换行
+  [label setNumberOfLines:0];
+  label.lineBreakMode = UILineBreakModeWordWrap;
 
-  // 测试字串  
-  NSString *s = @"这是一个测试！！！adsfsaf这是一个测试忘这是一个测试我阿阿这是一个测试阿这是一个测试阿啊00000000阿这是一个测试顿。。。这是一个测试";  
-  UIFont *font = [UIFont fontWithName:@"Arial" size:12];  
+  // 测试字串
+  NSString *s = @"这是一个测试！！！adsfsaf这是一个测试忘这是一个测试我阿阿这是一个测试阿这是一个测试阿啊00000000阿这是一个测试顿。。。这是一个测试";
+  UIFont *font = [UIFont fontWithName:@"Arial" size:12];
 
-  //设置一个行高上限  
-  CGSize size = CGSizeMake(320,2000);  
+  //设置一个行高上限
+  CGSize size = CGSizeMake(320,2000);
 
-  //计算实际frame大小，并将label的frame变成实际大小  
-  CGSize labelsize = [s sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];  
+  //计算实际frame大小，并将label的frame变成实际大小
+  CGSize labelsize = [s sizeWithFont:font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
   label1.frame = CGRectMake(0, 0, labelsize.width, labelsize.height);
 ```

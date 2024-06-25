@@ -1,6 +1,6 @@
 ---
 title: Objective-C KVO编程改善现有iOS代码设计
-publishDate:  2012-09-09 22:42:24
+publishDate: 2012-09-09 22:42:24
 image: ~/assets/images/aldis/2012/16.png
 category: 编程思想
 tags:
@@ -22,12 +22,13 @@ KVO的优点
 ObjC中提供了这个模式的解决方案，就是KVO。以下用简单示例说明KVO的实现方式。
 
 Book类，头文件：
+
 ```objc
 #import <Foundation/Foundation.h>
 
-@interface Book : NSObject { 
-    NSString *name; 
-    float price; 
+@interface Book : NSObject {
+    NSString *name;
+    float price;
 }
 
 @end
@@ -35,13 +36,14 @@ Book类，头文件：
 
 Book类的实现文件，没做任何事情，不贴了。
 现在，假设我有个视图，MyView，我这里为了不带入实际视图类的复杂性，只是模拟一个。用普通类。头文件：
+
 ```objc
 #import <Cocoa/Cocoa.h>
 
 @class Book;
 
-@interface MyView : NSObject { 
-    Book *book; 
+@interface MyView : NSObject {
+    Book *book;
 }
 
 - (id) init:(Book *)theBook;
@@ -52,33 +54,34 @@ Book类的实现文件，没做任何事情，不贴了。
 <!-- more -->
 
 实现文件：
+
 ```objc
 #import "MyView.h"
 
 @implementation MyView
 
-- (id) init:(Book *)theBook { 
-    if(self=[super init]){ 
-        book=theBook; 
-        [book addObserver:self forKeyPath:@"price" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil]; 
-    } 
-    return self; 
+- (id) init:(Book *)theBook {
+    if(self=[super init]){
+        book=theBook;
+        [book addObserver:self forKeyPath:@"price" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    }
+    return self;
 }
 
-- (void) dealloc{ 
-    [book removeObserver:self forKeyPath:@"price"]; 
-    [super dealloc]; 
+- (void) dealloc{
+    [book removeObserver:self forKeyPath:@"price"];
+    [super dealloc];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath 
-                      ofObject:(id)object 
-                        change:(NSDictionary *)change 
-                       context:(void *)context{ 
-    if([keyPath isEqual:@"price"]){ 
-        NSLog(@">>>>>>>price is changed"); 
-        NSLog(@"old price is %@",[change objectForKey:@"old"]); 
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context{
+    if([keyPath isEqual:@"price"]){
+        NSLog(@">>>>>>>price is changed");
+        NSLog(@"old price is %@",[change objectForKey:@"old"]);
         NSLog(@"new price is %@",[change objectForKey:@"new"]);
-    } 
+    }
 }
 
 @end
@@ -91,30 +94,30 @@ options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew
 可以让通知携带旧的price值和新的price值。后面会看到。observeValueForKeyPath方法，就是当price属性发生变化后，调用的方法。
 
 main方法中调用的代码：
+
 ```objc
-Book *book4=[[Book alloc] init]; 
-NSArray *bookProperties=[NSArray arrayWithObjects:@"name",@"price",nil]; 
-NSDictionary *bookPropertiesDictionary=[book4 dictionaryWithValuesForKeys:bookProperties]; 
+Book *book4=[[Book alloc] init];
+NSArray *bookProperties=[NSArray arrayWithObjects:@"name",@"price",nil];
+NSDictionary *bookPropertiesDictionary=[book4 dictionaryWithValuesForKeys:bookProperties];
 NSLog(@"book values: %@",bookPropertiesDictionary);
 
 [[[MyView alloc] init:book4] autorelease];
 
-NSDictionary *newBookPropertiesDictionary=[NSDictionary dictionaryWithObjectsAndKeys:@"《Objective C入门》",@"name", 
-                                           @"20.5",@"price",nil]; 
-[book4 setValuesForKeysWithDictionary:newBookPropertiesDictionary]; 
+NSDictionary *newBookPropertiesDictionary=[NSDictionary dictionaryWithObjectsAndKeys:@"《Objective C入门》",@"name",
+                                           @"20.5",@"price",nil];
+[book4 setValuesForKeysWithDictionary:newBookPropertiesDictionary];
 NSLog(@"book with new values: %@",[book4 dictionaryWithValuesForKeys:bookProperties]);
 ```
 
 在这里引发了price属性变化，触发了MyView的处理。
 
 另外，要注意，在Book实例释放前，要删除观察者，否则会报错，这里是在MyView里面实现的：
+
 ```objc
-- (void) dealloc{ 
-    [book removeObserver:self forKeyPath:@"price"]; 
-    [super dealloc]; 
+- (void) dealloc{
+    [book removeObserver:self forKeyPath:@"price"];
+    [super dealloc];
 }
 ```
 
 这里假定MyView实例的生命周期小于等于Book实例。实际使用可能要根据情况在合适的地方addObserver和removeObserver。
-
-                

@@ -25,9 +25,7 @@ const {
 </button>
 
 <div id="myModal" class="modal">
-  <div
-    class="modal-content bg-page dark:bg-dark m-2 w-[350px] md:w-[700px]"
-  >
+  <div class="modal-content bg-page dark:bg-dark m-2 w-[350px] md:w-[700px]">
     <span id="closeButton" class="close">&times;</span>
     <div id="search" class="bg-page dark:bg-dark m-8" transition:persist></div>
   </div>
@@ -36,24 +34,24 @@ const {
 <script>
   let pagefindUI;
 
-  document.addEventListener("astro:page-load", () => {
-    const modal = document.getElementById("myModal");
-    const searchButton = document.getElementById("searchButton");
-    const closeButton = document.getElementById("closeButton");
+  document.addEventListener('astro:page-load', () => {
+    const modal = document.getElementById('myModal');
+    const searchButton = document.getElementById('searchButton');
+    const closeButton = document.getElementById('closeButton');
 
-    searchButton.addEventListener("click", () => {
-      modal.classList.add("visible");
-      document.querySelector("#search input").focus();
+    searchButton.addEventListener('click', () => {
+      modal.classList.add('visible');
+      document.querySelector('#search input').focus();
     });
 
-    closeButton.addEventListener("click", () => {
-      modal.classList.remove("visible");
+    closeButton.addEventListener('click', () => {
+      modal.classList.remove('visible');
     });
 
     // Close the modal when clicking outside
-    window.addEventListener("click", (event) => {
+    window.addEventListener('click', (event) => {
       if (event.target === modal) {
-        modal.classList.remove("visible");
+        modal.classList.remove('visible');
       }
     });
 
@@ -62,7 +60,7 @@ const {
     }
 
     pagefindUI = new PagefindUI({
-      element: "#search",
+      element: '#search',
       showSubResults: true,
       resetStyles: false,
     });

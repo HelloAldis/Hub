@@ -1,15 +1,17 @@
 ---
 title: 五子棋的棋盘Android版
-publishDate:  2012-09-28 14:52:17
+publishDate: 2012-09-28 14:52:17
 image: ~/assets/images/aldis/2012/35.png
 category: 编程思想
-tags: 
+tags:
   - 游戏
   - Android
 ---
+
 五子棋的棋盘Android版实现，具体上下文可以参考上一篇的五子棋AI实现中的代码
 
 这里是实现一个五子棋的Android棋盘
+
 ```java
 import java.util.ArrayList;
 import java.util.List;
@@ -40,39 +42,39 @@ public class Chessboard extends View implements IChessboard{
     //已结束
     private static final int PLAYER_TWO_LOST = 3;
     private static final int PLAYER_ONE_LOST = 4;
-    
+
     //当前状态，默认为可开局状态
     private int currentMode = READY;
-    
+
 	//画笔对象
 	private final Paint paint = new Paint();
-	
+
 	//代表绿色
 	private static final int GREEN = 0;
 	private static final int NEW_GREEN = 1;
-	
+
 	//红色
 	private static final int RED = 2;
 	//黄色
 	private static final int NEW_RED = 3;
-	
+
 	//点大小
     private static int pointSize = 20;
-	
+
     //用于提示输赢的文本控件
 	private TextView textView = null;
-	
+
 	//不同颜色的Bigmap数组
 	private Bitmap[] pointArray = new Bitmap[4];
-	
+
 	//屏幕右下角的坐标值，即最大坐标值
     private static int maxX;
     private static int maxY;
-    
+
     //第一点偏离左上角从像数，为了棋盘居中
 	private static int yOffset;
 	private static int xOffset;
-	
+
 	//两个玩家
 	//第一个玩家默认为人类玩家
 	private IPlayer player1 = new HumanPlayer();
@@ -83,26 +85,26 @@ public class Chessboard extends View implements IChessboard{
 	private static IPlayer computer = AiFactory.getInstance(2);
 	//人类玩家
 	private static final IPlayer human = new HumanPlayer();
-	
+
 	// 所有未下的空白点
 	private final List<Point> allFreePoints = new ArrayList<Point>();
-	
+
     public Chessboard(Context context, AttributeSet attrs) {
         super(context, attrs);
         setFocusable(true);
-        
+
         //把三个颜色的点准备好，并放入数组
         Resources r = this.getContext().getResources();
         fillPointArrays(GREEN,r.getDrawable(R.drawable.green_point));
         fillPointArrays(NEW_GREEN,r.getDrawable(R.drawable.new_green_point));
         fillPointArrays(RED,r.getDrawable(R.drawable.red_point));
         fillPointArrays(NEW_RED,r.getDrawable(R.drawable.new_red_point));
-        
+
         //设置画线时用的颜色
         paint.setColor(Color.LTGRAY);
    }
-    
-    
+
+
     //初始横线和竖线的数目
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -117,7 +119,7 @@ public class Chessboard extends View implements IChessboard{
         //初始化棋盘上所有空白点
         createPoints();
     }
-    
+
     //产生棋盘上所有的线
     private void createLines(){
     	for (int i = 0; i <= maxX; i++) {//竖线
@@ -127,7 +129,7 @@ public class Chessboard extends View implements IChessboard{
     		lines.add(new Line(xOffset, yOffset+i*pointSize-pointSize/2, xOffset+maxX*pointSize, yOffset+i*pointSize-pointSize/2));
 		}
     }
-    
+
     //画棋盘
     private List<Line> lines = new ArrayList<Line>();
     private void drawChssboardLines(Canvas canvas){
@@ -135,7 +137,7 @@ public class Chessboard extends View implements IChessboard{
     		canvas.drawLine(line.xStart, line.yStart, line.xStop, line.yStop, paint);
 		}
     }
-    
+
     //线类
     class Line{
     	float xStart,yStart,xStop,yStop;
@@ -146,14 +148,14 @@ public class Chessboard extends View implements IChessboard{
 			this.yStop = yStop;
 		}
     }
-    
+
     //画点
     private void drawPoint(Canvas canvas,Point p,int color){
     	canvas.drawBitmap(pointArray[color],p.x*pointSize+xOffset,p.y*pointSize+yOffset,paint);
     }
-    
-    
-    
+
+
+
 
     //设置运行状态
 	public void setMode(int newMode) {
@@ -172,7 +174,7 @@ public class Chessboard extends View implements IChessboard{
 			currentMode = READY;
 		}
 	}
-	
+
 
 	//设置提示控件
 	public void setTextView(TextView textView) {
@@ -198,7 +200,7 @@ public class Chessboard extends View implements IChessboard{
         }
         return true;
 	}
-	
+
 	public void startPlayerVsComputer(int level) {
 		if (currentMode == READY) {
 			if (level < 3) {
@@ -214,7 +216,7 @@ public class Chessboard extends View implements IChessboard{
 		}
 
 	}
-	
+
 	public void startPlayerVsPlayer() {
 		if (currentMode == READY) {
 			player2 = human;
@@ -222,14 +224,14 @@ public class Chessboard extends View implements IChessboard{
 		restart();
     	setMode(RUNNING);
 	}
-	
+
 	public void restartGame() {
 		if (currentMode == RUNNING) {
         	restart();
         	setMode(READY);
 		}
 	}
-	
+
 	//根据触摸点坐标找到对应点
 	private Point newPoint(Float x, Float y){
 		Point p = new Point(0, 0);
@@ -247,7 +249,7 @@ public class Chessboard extends View implements IChessboard{
 		}
 		return p;
 	}
-	
+
 	//重新开始
 	private void restart() {
 		createPoints();
@@ -257,7 +259,7 @@ public class Chessboard extends View implements IChessboard{
 		//刷新一下
 		refressCanvas();
 	}
-	
+
 	//是否已开局
 	private boolean hasStart(){
 		return currentMode==RUNNING;
@@ -274,12 +276,12 @@ public class Chessboard extends View implements IChessboard{
 		if(onProcessing()){
 			return true;
 		}
-		
+
 		playerRun(event);
-		
+
 		return true;
 	}
-	
+
 	private synchronized void playerRun(MotionEvent event){
 		if(isPlayer1Run()){//第一玩家下棋
 			player1Run(event);
@@ -287,8 +289,8 @@ public class Chessboard extends View implements IChessboard{
 			player2Run(event);
 		}
 	}
-	
-	
+
+
 	private void player1Run(MotionEvent event){
 		Point point = newPoint(event.getX(), event.getY());
 		if(allFreePoints.contains(point)){//此棋是否可下
@@ -311,7 +313,7 @@ public class Chessboard extends View implements IChessboard{
 			}
 		}
 	}
-	
+
 	private void player2Run(MotionEvent event){
 		Point point = newPoint(event.getX(), event.getY());
 		if(allFreePoints.contains(point)){//此棋是否可下
@@ -329,8 +331,8 @@ public class Chessboard extends View implements IChessboard{
 			}
 		}
 	}
-	
-	
+
+
 	private RefreshHandler refreshHandler = new RefreshHandler();
 	class RefreshHandler extends Handler {
 
@@ -340,7 +342,7 @@ public class Chessboard extends View implements IChessboard{
         	//发消息触发handleMessage函数
             sendMessageDelayed(obtainMessage(0), delayMillis);
         }
-        
+
         //收到消息
         @Override
         public void handleMessage(Message msg) {
@@ -356,7 +358,7 @@ public class Chessboard extends View implements IChessboard{
     		}
         }
     };
-	
+
     //是否正在下某一步棋过程中，主是电脑下棋时需要较长的计算时间，这期间一定不可以再响应触摸事件
 	private boolean onProcessing() {
 		return whoRun == -1;
@@ -375,21 +377,21 @@ public class Chessboard extends View implements IChessboard{
 	private boolean isPlayer1Run(){
 		return whoRun==1;
 	}
-	
+
 	//是否轮到人类玩家下子
 	private boolean isPlayer2Run(){
 		return whoRun==2;
 	}
-	
+
 	private void setPlayer2Run(){
 		whoRun = 2;
 	}
-	
+
 	private void refressCanvas(){
 		//触发onDraw函数
         Chessboard.this.invalidate();
 	}
-	
+
 	private void drawPlayer1Point(Canvas canvas){
 		int size = player1.getMyPoints().size()-1;
 		if(size<0){
@@ -401,7 +403,7 @@ public class Chessboard extends View implements IChessboard{
 		//最后下的一个点标成黄色
 		drawPoint(canvas, player1.getMyPoints().get(size), NEW_GREEN);
 	}
-	
+
 	private void drawPlayer2Point(Canvas canvas){
 		if(player2==null){
 			return ;
@@ -416,8 +418,8 @@ public class Chessboard extends View implements IChessboard{
 		//最后下的一个点标成黄色
 		drawPoint(canvas, player2.getMyPoints().get(size), NEW_RED);
 	}
-    
-	
+
+
 	//初始化好三种颜色的点
     public void fillPointArrays(int color,Drawable drawable) {
         Bitmap bitmap = Bitmap.createBitmap(pointSize, pointSize, Bitmap.Config.ARGB_8888);
@@ -426,7 +428,7 @@ public class Chessboard extends View implements IChessboard{
         drawable.draw(canvas);
         pointArray[color] = bitmap;
     }
-    
+
     //doRun方法操作的是看不见的内存数据，此方法内容数据以图画的方式表现出来，所以画之前数据一定要先准备好
     @Override
     protected void onDraw(Canvas canvas) {
@@ -442,7 +444,7 @@ public class Chessboard extends View implements IChessboard{
 	public List<Point> getFreePoints() {
 		return allFreePoints;
 	}
-	
+
 	//初始化空白点集合
 	private void createPoints(){
 		allFreePoints.clear();

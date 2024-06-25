@@ -1,26 +1,19 @@
 ---
-import GalleryCard from '~/components/blog/GalleryCard.astro'
+import GalleryCard from '~/components/blog/GalleryCard.astro';
 import type { Post } from '~/types';
 
 type Props = {
-	posts: Array<Post>;
-  	user: string;
-}
+  posts: Array<Post>;
+  user: string;
+};
 
-const { posts, user } = Astro.props
+const { posts, user } = Astro.props;
 ---
 
-<section
-	class={"grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 mt-3"}
->
-	{
-		posts.map(async (post) => {
-			return (
-				<GalleryCard
-					post={post}
-					user={user}
-				/>
-			)
-		})
-	}
+<section class={'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-1 mt-3'}>
+  {
+    posts.map(async (post) => {
+      return <GalleryCard post={post} user={user} />;
+    })
+  }
 </section>

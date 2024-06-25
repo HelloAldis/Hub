@@ -1,6 +1,6 @@
 ---
 title: 五子棋AI算法Java实现
-publishDate:  2012-09-18 23:03:46
+publishDate: 2012-09-18 23:03:46
 image: ~/assets/images/aldis/2012/34.png
 category: 编程思想
 tags:
@@ -11,27 +11,29 @@ tags:
 五子棋AI算法 也算是一个典型的游戏AI算法，一些棋类的AI算法都可以参考实现，下面是Java实现代码
 
 棋盘抽象接口
+
 ```java
-import java.util.List;  
-  
-public interface IChessboard {  
-    //取得棋盘最大横坐标  
-    public int getMaxX();  
-    //最大纵坐标  
-    public int getMaxY();  
-    //取得当前所有空白点，这些点才可以下棋  
-    public List<Point> getFreePoints();  
-} 
+import java.util.List;
+
+public interface IChessboard {
+    //取得棋盘最大横坐标
+    public int getMaxX();
+    //最大纵坐标
+    public int getMaxY();
+    //取得当前所有空白点，这些点才可以下棋
+    public List<Point> getFreePoints();
+}
 ```
 
 棋子类实现
+
 ```java
 //棋子类
 public class Point {
 	// 这了性能，设成公有
 	public int x;
 	public int y;
-	
+
 
 	public int getX() {
 		return x;
@@ -80,22 +82,24 @@ public class Point {
 <!-- more -->
 
 玩家抽象接口
+
 ```java
-import java.util.List;  
-  
-public interface IPlayer {  
-    //下一步棋子，传入对手已经下的棋子集合  
-    public void run(List<Point> enemyPoints, Point point);  
-  
-    public boolean hasWin();  
-      
-    public void setChessboard(IChessboard chessboard);  
-      
-    public List<Point> getMyPoints();  
-}  
+import java.util.List;
+
+public interface IPlayer {
+    //下一步棋子，传入对手已经下的棋子集合
+    public void run(List<Point> enemyPoints, Point point);
+
+    public boolean hasWin();
+
+    public void setChessboard(IChessboard chessboard);
+
+    public List<Point> getMyPoints();
+}
 ```
 
 玩家基础抽象类
+
 ```java
 import java.util.ArrayList;
 import java.util.List;
@@ -108,7 +112,7 @@ public abstract class BasePlayer implements IPlayer {
 	//棋盘最大横坐标和纵标，
 	protected int maxX;
 	protected int maxY;
-	
+
 	//所有空白棋子
 	protected List<Point> allFreePoints;
 
@@ -125,7 +129,7 @@ public abstract class BasePlayer implements IPlayer {
 		maxY = chessboard.getMaxY();
 		myPoints.clear();
 	}
-	
+
 	private final Point temp = new Point(0, 0);
 	//我是否是否赢了
 	public final boolean hasWin(){
@@ -204,6 +208,7 @@ public abstract class BasePlayer implements IPlayer {
 ```
 
 电脑AI类实现
+
 ```java
 import java.util.ArrayList;
 import java.util.Collections;
@@ -225,14 +230,14 @@ public class BaseComputerAi extends BasePlayer {
 	//往前往后
 	private static final boolean FORWARD = true;
 	private static final boolean BACKWARD = false;
-	
-	
-	
+
+
+
 	//标示分析结果当前点位是两头通（ALIVE）还是只有一头通（HALF_ALIVE），封死的棋子分析过程自动屏蔽，不作为待选棋子
 	private static final int ALIVE = 1;
 	private static final int HALF_ALIVE = 0;
 	//private static final int DEAD = -1;
-	
+
 	//计算范围，太大的范围会有性能问题
 	private class CalcuteRange{
 		int xStart,yStart,xStop,yStop;
@@ -243,8 +248,8 @@ public class BaseComputerAi extends BasePlayer {
 			this.yStop = yStop;
 		}
 	}
-	
-	
+
+
 	//限定电脑计算范围，如果整个棋盘计算，性能太差，目前是根据所有已下的棋子的边界值加RANGE_STEP值形成，目前为1
 	private static final int RANGE_STEP = 1;
 	CalcuteRange currentRange = new CalcuteRange(0, 0, 0, 0);
@@ -277,7 +282,7 @@ public class BaseComputerAi extends BasePlayer {
 				currentRange.yStop = point.getY()+RANGE_STEP;
 			}
 		}
-		
+
 		//如果范围扩大后超过了棋盘，则等于棋盘
 		currentRange.xStart=currentRange.xStart<0?0:currentRange.xStart;
 		currentRange.yStart=currentRange.yStart<0?0:currentRange.yStart;
@@ -290,10 +295,10 @@ public class BaseComputerAi extends BasePlayer {
 		if(humans.size()==1){//第一步
 			return getFirstPoint(humans);
 		}
-		
+
 		//初始化计算范围
 		initRange(comuters, humans);
-		
+
 		//清除以前的结果
 		initAnalysisResults();
 		// 开始分析，扫描所有空白点，形成第一次分析结果
@@ -321,7 +326,7 @@ public class BaseComputerAi extends BasePlayer {
 		//没找到绝杀点，第三次结果分析
 		return doThirdAnalysis();
 	}
-	
+
 
 	//下第一步棋子，不需要复杂的计算，根据人类第一步棋子X值减1完成
 	private Point getFirstPoint(List<Point> humans) {
@@ -350,11 +355,11 @@ public class BaseComputerAi extends BasePlayer {
 			if(x<currentRange.xStart || x>currentRange.xStop || y<currentRange.yStart || y>currentRange.yStop){
 				continue;
 			}
-			
+
 //			if(x==debugx && y==debugy){
 //				System.out.println("sssssssssssss");
 //			}
-			
+
 			//尝试在此位置上下一个棋子，并分析在“横向”这个方向上我方可形成的状态，如活4，活3，半活4，活2等所有状态
 			firstAnalysisResult = tryAndCountResult(comuters,humans, computerPoint, HENG);
 			computerPoint.setX(x).setY(y);//回复点位的原值，以供下次分析
@@ -364,81 +369,81 @@ public class BaseComputerAi extends BasePlayer {
 				//记录第一次分析结果
 				addToFirstAnalysisResult(firstAnalysisResult,computerFirstResults);
 			}
-			
+
 			//在“纵向”这个方向上重复上面的步骤
 			firstAnalysisResult = tryAndCountResult(comuters,humans, computerPoint, ZHONG);
 			computerPoint.setX(x).setY(y);
 			if(firstAnalysisResult!=null){//死棋，不下
 				if(firstAnalysisResult.count==5)
 					return computerPoint;
-				
+
 				addToFirstAnalysisResult(firstAnalysisResult,computerFirstResults);
 			}
-			
+
 			//正斜向
 			firstAnalysisResult = tryAndCountResult(comuters,humans, computerPoint, ZHENG_XIE);
 			computerPoint.setX(x).setY(y);
 			if(firstAnalysisResult!=null){//死棋，不下
 				if(firstAnalysisResult.count==5)
 					return computerPoint;
-				
+
 				addToFirstAnalysisResult(firstAnalysisResult,computerFirstResults);
 			}
-			
+
 			//反斜向
 			firstAnalysisResult = tryAndCountResult(comuters,humans, computerPoint, FAN_XIE);
 			computerPoint.setX(x).setY(y);
 			if(firstAnalysisResult!=null){//死棋，不下
 				if(firstAnalysisResult.count==5)
 					return computerPoint;
-				
+
 				addToFirstAnalysisResult(firstAnalysisResult,computerFirstResults);
 			}
-			
+
 			//在“横向”上分析此棋子可在敌方形成如何状态，如敌方的活3、半活4等
 			firstAnalysisResult = tryAndCountResult(humans,comuters, computerPoint, HENG);
 			computerPoint.setX(x).setY(y);
 			if(firstAnalysisResult!=null){//死棋，不下
 				if(firstAnalysisResult.count==5)
 					humanPoint = computerPoint;
-				
+
 				addToFirstAnalysisResult(firstAnalysisResult,humanFirstResults);
 			}
-			
+
 			//“纵向”
 			firstAnalysisResult = tryAndCountResult(humans,comuters, computerPoint, ZHONG);
 			computerPoint.setX(x).setY(y);
 			if(firstAnalysisResult!=null){//死棋，不下
 				if(firstAnalysisResult.count==5)
 					humanPoint = computerPoint;
-				
+
 				addToFirstAnalysisResult(firstAnalysisResult,humanFirstResults);
 			}
-			
+
 			//“正斜”
 			firstAnalysisResult = tryAndCountResult(humans,comuters, computerPoint, ZHENG_XIE);
 			computerPoint.setX(x).setY(y);
 			if(firstAnalysisResult!=null){//死棋，不下
 				if(firstAnalysisResult.count==5)
 					humanPoint = computerPoint;
-				
+
 				addToFirstAnalysisResult(firstAnalysisResult,humanFirstResults);
 			}
-			
+
 			//“反斜”
 			firstAnalysisResult = tryAndCountResult(humans,comuters, computerPoint, FAN_XIE);
 			computerPoint.setX(x).setY(y);
 			if(firstAnalysisResult!=null){//死棋，不下
 				if(firstAnalysisResult.count==5)
 					humanPoint = computerPoint;
-				
+
 				addToFirstAnalysisResult(firstAnalysisResult,humanFirstResults);
 			}
 		}
 		//如果没有绝杀棋子，第一次分析不需要返回结果
 		return humanPoint;
 	}
-	
+
 	//第二次分析，分析第一次形成的结果，第一次分析结果会把一步棋在四个方向上可形成的结果生成最多四个FirstAnalysisResult对象（敌我各四）
 	//这里要把这四个对象组合成一个SencondAnalysisResult对象，
 	private Point doComputerSencondAnalysis(Map<Point,List<FirstAnalysisResult>> firstResults,List<SencondAnalysisResult> sencodResults) {
@@ -481,7 +486,7 @@ public class BaseComputerAi extends BasePlayer {
 		//没有找到活4
 		return null;
 	}
-	
+
 	//这个方法和上面的基本一样，但为了性能，少作几次判断，将人类和电脑的分开了
 	private Point doHumanSencondAnalysis(Map<Point,List<FirstAnalysisResult>> firstResults,List<SencondAnalysisResult> sencodResults) {
 		List<FirstAnalysisResult> list = null;
@@ -523,15 +528,15 @@ public class BaseComputerAi extends BasePlayer {
 		//没有找到活4
 		return null;
 	}
-	
+
 	private void sleep(int miniSecond){
 		try {
 			Thread.sleep(miniSecond);
 		} catch (InterruptedException e) {
 		}
 	}
-	
-	
+
+
 	//第三次分析，双方都不可以制造活4，找双活3棋子，不行就找半活4，再不行就找单活3，双活2
 	private Point doThirdAnalysis() {
 		if(!computer4HalfAlives.isEmpty()){
@@ -541,38 +546,38 @@ public class BaseComputerAi extends BasePlayer {
 		sleep(300);
 		Collections.sort(computerSencodResults);
 		System.gc();
-		
+
 		//即将单活4，且我没有半活4以上的，只能堵
 		Point mostBest = getBestPoint(human4Alives, computerSencodResults);
 		if(mostBest!=null)
 			return mostBest;
-		
+
 		Collections.sort(humanSencodResults);
 		System.gc();
-		
+
 		mostBest = getBestPoint();
 		if(mostBest!=null)
 			return mostBest;
-		
+
 		//拿出各自排第一的，谁好就下谁
 		return computerSencodResults.get(0).point;
 	}
-	
+
 	//子类实现这个方法，并改变其顺序可以实现防守为主还是猛攻
 	protected Point getBestPoint(){
 		//即将单活4，且我没有半活4以上的，只能堵
 		Point mostBest = getBestPoint(computerDouble3Alives, humanSencodResults);
 		if(mostBest!=null)
 			return mostBest;
-		
+
 		mostBest = getBestPoint(computer3Alives, humanSencodResults);
 		if(mostBest!=null)
 			return mostBest;
-		
+
 		mostBest = getBestPoint(humanDouble3Alives, computerSencodResults);
 		if(mostBest!=null)
 			return mostBest;
-		
+
 		mostBest = getBestPoint(human3Alives, computerSencodResults);
 		if(mostBest!=null)
 			return mostBest;
@@ -580,32 +585,32 @@ public class BaseComputerAi extends BasePlayer {
 		mostBest = getBestPoint(computerDouble2Alives, humanSencodResults);
 		if(mostBest!=null)
 			return mostBest;
-		
+
 		mostBest = getBestPoint(computer2Alives, humanSencodResults);
 		if(mostBest!=null)
 			return mostBest;
-		
+
 		mostBest = getBestPoint(computer3HalfAlives, humanSencodResults);
 		if(mostBest!=null)
 			return mostBest;
-		
+
 		mostBest = getBestPoint(human4HalfAlives, computerSencodResults);
 		if(mostBest!=null)
 			return mostBest;
-		
+
 		mostBest = getBestPoint(humanDouble2Alives, computerSencodResults);
 		if(mostBest!=null)
 			return mostBest;
-		
+
 		mostBest = getBestPoint(human2Alives, computerSencodResults);
 		if(mostBest!=null)
 			return mostBest;
-		
+
 		mostBest = getBestPoint(human3HalfAlives, computerSencodResults);
 		return mostBest;
 	}
-	
-	
+
+
 	//第三次分析的最后一步，第二次结果已经过排序，在此可以从前面选出最好的棋子
 	protected Point getBestPoint(List<SencondAnalysisResult> myBest,List<SencondAnalysisResult> yourSencodResults){
 		if(!myBest.isEmpty()){
@@ -622,8 +627,8 @@ public class BaseComputerAi extends BasePlayer {
 		}
 		return null;
 	}
-	
-	
+
+
 	//第一次分析结果
 	private final Map<Point,List<FirstAnalysisResult>> computerFirstResults = new HashMap<Point,List<FirstAnalysisResult>>();
 	private final Map<Point,List<FirstAnalysisResult>> humanFirstResults = new HashMap<Point,List<FirstAnalysisResult>>();
@@ -637,7 +642,7 @@ public class BaseComputerAi extends BasePlayer {
 	protected final List<SencondAnalysisResult> computerDouble2Alives = new ArrayList<SencondAnalysisResult>();
 	protected final List<SencondAnalysisResult> computer2Alives = new ArrayList<SencondAnalysisResult>();
 	protected final List<SencondAnalysisResult> computer3HalfAlives = new ArrayList<SencondAnalysisResult>();
-	
+
 	//第二次分结果，人类
 	protected final List<SencondAnalysisResult> human4Alives = new ArrayList<SencondAnalysisResult>(2);
 	protected final List<SencondAnalysisResult> human4HalfAlives = new ArrayList<SencondAnalysisResult>(5);
@@ -646,7 +651,7 @@ public class BaseComputerAi extends BasePlayer {
 	protected final List<SencondAnalysisResult> humanDouble2Alives = new ArrayList<SencondAnalysisResult>(3);
 	protected final List<SencondAnalysisResult> human2Alives = new ArrayList<SencondAnalysisResult>();
 	protected final List<SencondAnalysisResult> human3HalfAlives = new ArrayList<SencondAnalysisResult>();
-	
+
 	//第一次分析前清空上一步棋子的分析结果
 	private void initAnalysisResults(){
 		computerFirstResults.clear();
@@ -661,7 +666,7 @@ public class BaseComputerAi extends BasePlayer {
 		computerDouble2Alives.clear();
 		computer2Alives.clear();
 		computer3HalfAlives.clear();
-		
+
 		//第二次分结果，人类
 		human4Alives.clear();
 		human4HalfAlives.clear();
@@ -672,7 +677,7 @@ public class BaseComputerAi extends BasePlayer {
 		human3HalfAlives.clear();
 		System.gc();
 	}
-	
+
 	//加入到第一次分析结果中
 	private void addToFirstAnalysisResult(FirstAnalysisResult result,Map<Point,List<FirstAnalysisResult>> dest){
 		if(dest.containsKey(result.point)){
@@ -683,8 +688,8 @@ public class BaseComputerAi extends BasePlayer {
 			dest.put(result.point, list);
 		}
 	}
-	
-	
+
+
 	//第一次分析结果类
 	private class FirstAnalysisResult{
 		//连续数
@@ -698,16 +703,16 @@ public class BaseComputerAi extends BasePlayer {
 		private FirstAnalysisResult(int count, Point point, int direction) {
 			this(count, point, direction, ALIVE);
 		}
-		
+
 		private FirstAnalysisResult(int count, Point point, int direction,int aliveState) {
 			this.count = count;
 			this.point = point;
 			this.direction = direction;
 			this.aliveState = aliveState;
 		}
-		
 
-		
+
+
 		private FirstAnalysisResult init(Point point,int direction,int aliveState){
 			this.count = 1;
 			this.point = point;
@@ -715,13 +720,13 @@ public class BaseComputerAi extends BasePlayer {
 			this.aliveState = aliveState;
 			return this;
 		}
-		
+
 		private FirstAnalysisResult cloneMe(){
 			return new FirstAnalysisResult(count, point, direction,aliveState);
 		}
-		
+
 	}
-	
+
 	//第二次分析结果类
 	class SencondAnalysisResult implements Comparable<SencondAnalysisResult>{
 		int alive4 = 0;
@@ -735,7 +740,7 @@ public class BaseComputerAi extends BasePlayer {
 		int alive2 = 0;
 		//点位
 		Point point;
-		
+
 		@Override
 		public int hashCode() {
 			final int prime = 31;
@@ -757,16 +762,16 @@ public class BaseComputerAi extends BasePlayer {
 		private SencondAnalysisResult(Point point) {
 			this.point = point;
 		}
-		
-		
+
+
 		//第三次分析时，对第二次分析结果进行排序，此为排序回调函数
 		@Override
 		public int compareTo(SencondAnalysisResult another) {
 			return compareTowResult(this, another);
 		}
-			
+
 	}
-	
+
 	//返加-1则第一个参数优先，1则第二个参数优先，0则按原来顺序
 	private int compareTowResult(SencondAnalysisResult oneResult,SencondAnalysisResult another){
 		if(oneResult.alive4>another.alive4){
@@ -801,8 +806,8 @@ public class BaseComputerAi extends BasePlayer {
 		}
 		return 0;
 	}
-	
-	
+
+
 	//一个临时对象，供第一次分析时临时存放分析结果使用，如果分析出有活1以上（不含）的结果，则调用其cloneMe方法获得结果，否则抛弃此结果
 	private final FirstAnalysisResult far = new FirstAnalysisResult(1, null, HENG);
 	// 分析如果在当前位下一子，会形成某个方向上多少个子，参数：当前己方已下的所有点，当前要假设的点，需要判断的方向
@@ -810,7 +815,7 @@ public class BaseComputerAi extends BasePlayer {
 		int x = point.getX();
 		int y = point.getY();
 		FirstAnalysisResult fr = null;
-		
+
 		int maxCountOnThisDirection = maxCountOnThisDirection(point, enemyPoints, direction, 1);
 		if(maxCountOnThisDirection<5){
 			//无意义的棋子
@@ -822,19 +827,19 @@ public class BaseComputerAi extends BasePlayer {
 			//两头皆通
 			fr = far.init(point, direction,ALIVE);
 		}
-		
+
 		//在前和后的方向上计算一次
 		countPoint(myPoints,enemyPoints,point.setX(x).setY(y),fr,direction,FORWARD);
 		countPoint(myPoints,enemyPoints,point.setX(x).setY(y),fr,direction,BACKWARD);
-		
-		
+
+
 		if(fr.count<=1 || (fr.count==2 && fr.aliveState==HALF_ALIVE)){//活1，半活2及其以下结果，抛弃
 			return null;
 		}
 		//返回复制的结果
 		return fr.cloneMe();
 	}
-	
+
 	//棋子出了墙
 	private boolean isOutSideOfWall(Point point,int direction){
 		if(direction==HENG){
@@ -845,7 +850,7 @@ public class BaseComputerAi extends BasePlayer {
 			return point.getX()<0 || point.getY()<0 || point.getX()>=maxX || point.getY()>=maxY;
 		}
 	}
-	
+
 	private Point pointToNext(Point point,int direction,boolean forward){
 		switch (direction) {
 			case HENG:
@@ -881,7 +886,7 @@ public class BaseComputerAi extends BasePlayer {
 		}
 		return point;
 	}
-	
+
 	//在某个方向（八个中的一个）可下多少棋子，这个方法是第一分析中的核心方法
 	private void countPoint(List<Point> myPoints, List<Point> enemyPoints, Point point, FirstAnalysisResult fr,int direction,boolean forward) {
 		if(myPoints.contains(pointToNext(point,direction,forward))){
@@ -905,8 +910,8 @@ public class BaseComputerAi extends BasePlayer {
 			fr.aliveState=HALF_ALIVE;
 		}
 	}
-	
-	
+
+
 
 	//在某个方向上是否还能下到满五个棋子
 	private int maxCountOnThisDirection(Point point,List<Point> enemyPoints,int direction,int count){
@@ -955,7 +960,7 @@ public class BaseComputerAi extends BasePlayer {
 		}
 		return count;
 	}
-	
+
 	//下棋子，对外接口
 	@Override
 	public void run(List<Point> humans,Point p) {
@@ -972,17 +977,18 @@ public class BaseComputerAi extends BasePlayer {
 ```
 
 人类玩家实现起来就非常简单
+
 ```java
-import java.util.List;  
-  
-public class HumanPlayer extends BasePlayer {  
-  
-    @Override  
-    public void run(List<Point> enemyPoints,Point p) {  
-        getMyPoints().add(p);  
-        allFreePoints.remove(p);  
-    }  
-} 
+import java.util.List;
+
+public class HumanPlayer extends BasePlayer {
+
+    @Override
+    public void run(List<Point> enemyPoints,Point p) {
+        getMyPoints().add(p);
+        allFreePoints.remove(p);
+    }
+}
 ```
 
 总结：虽然是Java写的但算法已被抽象可以方便的修改成各种平台的实现。

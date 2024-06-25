@@ -21,7 +21,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { page } = Astro.props as Props;
 const currentPage = page.currentPage ?? 1;
 const totalPages = Math.ceil(page.total / page.size);
-const basePath = "/camila/blog/";
+const basePath = '/camila/blog/';
 
 const metadata = {
   title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
@@ -42,7 +42,13 @@ const metadata = {
     </Headline>
     <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4 pt-0 pb-8">
       <div class="flex w-full sm:w-auto">
-        <Button variant="primary" text="Categories" href="/camila/category" icon="tabler:category" class="w-full sm:mb-0" />
+        <Button
+          variant="primary"
+          text="Categories"
+          href="/camila/category"
+          icon="tabler:category"
+          class="w-full sm:mb-0"
+        />
       </div>
       <div class="flex w-full sm:w-auto">
         <Button variant="secondary" text="Tags" href="/camila/tag" icon="tabler:tag" class="w-full sm:mb-0" />

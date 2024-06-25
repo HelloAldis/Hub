@@ -194,7 +194,11 @@ export const findLatestPosts = async ({ count }: { count?: number }, user: strin
 };
 
 /** */
-export const getStaticPathsBlogList = async ({ paginate }: { paginate: PaginateFunction }, user: string, size = blogPostsPerPage) => {
+export const getStaticPathsBlogList = async (
+  { paginate }: { paginate: PaginateFunction },
+  user: string,
+  size = blogPostsPerPage
+) => {
   if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
   return paginate(await fetchPosts(user), {
     params: { blog: BLOG_BASE || undefined },
@@ -214,7 +218,11 @@ export const getStaticPathsBlogPost = async (user: string) => {
 };
 
 /** */
-export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: PaginateFunction }, user: string, size = blogPostsPerPage) => {
+export const getStaticPathsBlogCategory = async (
+  { paginate }: { paginate: PaginateFunction },
+  user: string,
+  size = blogPostsPerPage
+) => {
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts(user);
@@ -236,7 +244,11 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
 };
 
 /** */
-export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFunction }, user: string, size = blogPostsPerPage) => {
+export const getStaticPathsBlogTag = async (
+  { paginate }: { paginate: PaginateFunction },
+  user: string,
+  size = blogPostsPerPage
+) => {
   if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
 
   const posts = await fetchPosts(user);
@@ -298,27 +310,27 @@ export async function getRelatedPosts(originalPost: Post, user: string, maxResul
 }
 
 export const getTags = async (user: string) => {
-	const allPosts = await fetchPosts(user);
-	const tagMap = new Map();
-	allPosts.forEach((post) => {
-    if(post.tags) {
+  const allPosts = await fetchPosts(user);
+  const tagMap = new Map();
+  allPosts.forEach((post) => {
+    if (post.tags) {
       post.tags.forEach((tag) => {
         tagMap.set(tag.slug, tag.title);
-      })
+      });
     }
-	});
+  });
 
-	return tagMap;
-}
+  return tagMap;
+};
 
 export const getCategories = async (user: string) => {
-	const allPosts = await fetchPosts(user);
-	const categories = new Map();
-	allPosts.forEach((post) => {
+  const allPosts = await fetchPosts(user);
+  const categories = new Map();
+  allPosts.forEach((post) => {
     if (post.category) {
       categories.set(post.category.slug, post.category.title);
     }
-	});
+  });
 
-	return Array.from(categories);
-}
+  return Array.from(categories);
+};

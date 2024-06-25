@@ -1,6 +1,6 @@
 ---
 title: 如何运用Xcode创建单元测试UnitTest
-publishDate:  2013-04-25 23:09:16
+publishDate: 2013-04-25 23:09:16
 image: ~/assets/images/aldis/2013/2013-04-25/1.png
 category: 编程思想
 tags:
@@ -59,19 +59,18 @@ Next后位target完成命名
 
 ![](~/assets/images/aldis/2013/2013-04-25/8.png)
 
-
 新建完target后，可以将新建的target设置成logic unit tests或者application unit tests：
 设置logic unit tests：就像之前所说，如果按上面的步骤添加一个单元测试用的target的话，就已经默认配置成了一个logic unit tests。
 为了确认新建的logic uint tests配置正确，可以进行如下的验证：
-1. 选择新建的scheme：LogicUnitTests和一个运行目标
-![](~/assets/images/aldis/2013/2013-04-25/9.png)
-![](~/assets/images/aldis/2013/2013-04-25/10.png)
 
+1. 选择新建的scheme：LogicUnitTests和一个运行目标
+   ![](~/assets/images/aldis/2013/2013-04-25/9.png)
+   ![](~/assets/images/aldis/2013/2013-04-25/10.png)
 
 1. 选择Product ->Test（或者Command+U）
-2. Xcode会显示Build Successed 和Test failed，选择
-View -> Navigators -> Issue（或者Command + 4）会有下图中的结果
-![](~/assets/images/aldis/2013/2013-04-25/11.png)
+1. Xcode会显示Build Successed 和Test failed，选择
+   View -> Navigators -> Issue（或者Command + 4）会有下图中的结果
+   ![](~/assets/images/aldis/2013/2013-04-25/11.png)
 
 选择View -> Navigators -> Show Log Navigator(Command + 7)
 ![](~/assets/images/aldis/2013/2013-04-25/12.png)
@@ -79,20 +78,21 @@ View -> Navigators -> Issue（或者Command + 4）会有下图中的结果
 这样就说明添加的逻辑单元测试运行正确，因为没有添加测试语句，只有一个STFail，所以报错。将Logic UnitTest 设置application unit tests：
 如果在新建工程的时候选择Include unit tests，则系统会默认生成一个测试target，并配置为application unit tests。
 如果新建工程时没有选择包含单元测试，则在新建Logic UnitTest单元测试的Target之后，可以按如下步骤配置application unit tests：
+
 1. 选择新建的Logic UnitTest单元测试target，并选择Build Setting栏和“All”
-![](~/assets/images/aldis/2013/2013-04-25/13.png)
+   ![](~/assets/images/aldis/2013/2013-04-25/13.png)
 
 2. 在search bar里面输入Bundle Loader，将其值设置为$(BUILT_PRODUCTS_DIR)/<app_name>.app/<app_name>效果如下
-![](~/assets/images/aldis/2013/2013-04-25/14.png)
+   ![](~/assets/images/aldis/2013/2013-04-25/14.png)
 
 3. 搜索Test Host，设置其值为$(BUNDLE_LOADER)效果如图
-![](~/assets/images/aldis/2013/2013-04-25/15.png)
+   ![](~/assets/images/aldis/2013/2013-04-25/15.png)
 
 4. 使新建的单元测试target依赖与编译应用的target，效果如图
-![](~/assets/images/aldis/2013/2013-04-25/16.png)
+   ![](~/assets/images/aldis/2013/2013-04-25/16.png)
 
 5. 果是在新建的时候系统默认新建了scheme，则可以通过新的scheme来进行application tests，如果没有默认新建scheme，则可以编辑用来编译工程的scheme，选择左侧的Test如图：
-![](~/assets/images/aldis/2013/2013-04-25/17.png)
+   ![](~/assets/images/aldis/2013/2013-04-25/17.png)
 
 点击底部的“+”，将单元测试的target添加进来。如图
 ![](~/assets/images/aldis/2013/2013-04-25/18.png)

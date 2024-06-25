@@ -1,6 +1,6 @@
 ---
 title: iOS 6 手持方向处理
-publishDate:  2012-11-21 00:18:32
+publishDate: 2012-11-21 00:18:32
 image: ~/assets/images/aldis/2012/7.png
 category: 编程思想
 tags:
@@ -21,6 +21,7 @@ iOS5的解决方案
 接下来，在需要的方向锁定为横向视图控制器类，你需要重写- (BOOL)shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation)interfaceOrientation方法，并返回YES或NO相对一个布尔值，检查对interfaceOrientation参数。
 
 下面是函数看起来像什么。
+
 ```objc
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -39,6 +40,7 @@ iOS6的解决方案
 
 // iOS6中过时, 为了兼容iOS5.
 // ---
+
 ```objc
 - (BOOL)shouldAutorotateToInterfaceOrientation:
         (UIInterfaceOrientation)interfaceOrientation
@@ -50,6 +52,7 @@ iOS6的解决方案
 
 // iOS6 support
 // ---
+
 ```objc
 - (BOOL)shouldAutorotate
 {

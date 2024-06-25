@@ -1,6 +1,6 @@
 ---
 title: 使用OCLint规范Objective-C代码
-publishDate:  2013-06-07 14:32:20
+publishDate: 2013-06-07 14:32:20
 image: ~/assets/images/aldis/2013/2013-06-07/oclint-result.png
 category: 编程思想
 tags:
@@ -18,14 +18,18 @@ OCLint类似我们在做Java开发的java hint，和前段开始的ESLint，jshi
 **保证每次提交的代码可以lint通过是一个合格程序员基本素养**
 
 ## 安装OCLint
+
 1. 按照Home brew。控制台运行`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 2. Home brew安装OCLint
+
 ```bash
 brew tap oclint/formulae
 brew install oclint
 ```
+
 3. 如果通过Home brew安装不成功可以直接下载darwin https://github.com/oclint/oclint/releases
-然后为`.bashrc`或`.bash_profile`添加下面
+   然后为`.bashrc`或`.bash_profile`添加下面
+
 ```bash
 OCLINT_HOME=/path/to/oclint
 export PATH=$OCLINT_HOME/bin:$PATH
@@ -34,7 +38,9 @@ export PATH=$OCLINT_HOME/bin:$PATH
 <!-- more -->
 
 ## 为项目田间OCLint的配置文件.oclint
+
 项目根目录创建一个.oclint，这里提供了一个通用模版
+
 ```yaml
 # 禁用哪些规则
 disable-rules:
@@ -61,12 +67,15 @@ max-priority-1: 0
 max-priority-2: 10
 max-priority-3: 20
 ```
+
 如果对于某些项目来说又些不合适的，开发人员可以配置自己项目的.oclint文件。
 
 ## 为项目创建一个lint Shell脚本
+
 项目根目录创建一个lint.sh，这里提供了一个通用模版。开发者需要更具自己项目修改下面2点
-* xcodebuild编译语句，指定自己的project, scheme等
-* oclint-json-compilation-database 命令里指定自己项目的排除文件
+
+- xcodebuild编译语句，指定自己的project, scheme等
+- oclint-json-compilation-database 命令里指定自己项目的排除文件
 
 ```bash
 # 删除已经存在了的静态代码检查文件
@@ -90,8 +99,10 @@ rm xcodebuild.log
 #打开报表
 open ./oclint.html
 ```
+
 生成的报表类似：
 ![](~/assets/images/aldis/2013/2013-06-07/oclint-result.png)
 
 ## 更多关于OCLint的知识了参考
-* [OCLint官网](http://docs.oclint.org/en/stable/index.html)
+
+- [OCLint官网](http://docs.oclint.org/en/stable/index.html)

@@ -1,12 +1,13 @@
 ---
 title: UITextField滑动防止被键盘挡住终极解决方案
-publishDate:  2013-02-20 00:22:53
+publishDate: 2013-02-20 00:22:53
 image: ~/assets/images/aldis/2013/2013-02-20/2.png
 category: 编程思想
 tags:
   - UITextField
   - Objective-C
 ---
+
 问题：当屏幕下方有textfield时会被弹出的键盘挡住，用户体验不太好。
 
 坚决方法：使用scroll view 当textfield成为first responder时 将textfield滑动到键盘上面
@@ -52,7 +53,7 @@ AutoScrollView类自动的实现了这一特性，要集成这个功能，只要
 
 @interface AutoScrollView ()
 
-// add the keybord notification 
+// add the keybord notification
 - (void)setup;
 
 // remove the keybord notification
@@ -74,7 +75,7 @@ AutoScrollView类自动的实现了这一特性，要集成这个功能，只要
     if (self) {
         [self setup];
     }
-    
+
     return self;
 }
 
@@ -102,26 +103,26 @@ AutoScrollView类自动的实现了这一特性，要集成这个功能，只要
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-// scroll contentOffset when keybord will show 
+// scroll contentOffset when keybord will show
 - (void)keyboardWillShow:(NSNotification *)notification {
     self.previousOffset = self.contentOffset;
     NSDictionary *userInfo = [notification userInfo];
-    
-    // get keyboard rect in windwo coordinate 
+
+    // get keyboard rect in windwo coordinate
     CGRect keyboardRect = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    
+
     // convert keyboard rect from window coordinate to scroll view coordinate
     keyboardRect = [self convertRect:keyboardRect fromView:nil];
-    
+
     // get keybord anmation duration
     NSTimeInterval animationDuration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
-    // get first responder textfield 
+
+    // get first responder textfield
     UIView *currentResponder = [self findFirstResponderBeneathView:self];
     if (currentResponder != nil) {
         // convert textfield left bottom point to scroll view coordinate
         CGPoint point = [currentResponder convertPoint:CGPointMake(0, currentResponder.frame.size.height) toView:self];
-        
+
         // 计算textfield左下角和键盘上面20像素 之间是不是差值
         float scrollY = point.y - (keyboardRect.origin.y - 20);
         if (scrollY > 0) {
@@ -158,4 +159,3 @@ AutoScrollView类自动的实现了这一特性，要集成这个功能，只要
 
 效果
 ![](~/assets/images/aldis/2013/2013-02-20/2.png)
-
