@@ -117,12 +117,7 @@ let _camilaPosts: Array<Post>;
 let _sevenPosts: Array<Post>;
 
 /** */
-export const isBlogEnabled = APP_BLOG.isEnabled;
-export const isRelatedPostsEnabled = APP_BLOG.isRelatedPostsEnabled;
-export const isBlogListRouteEnabled = APP_BLOG.list.isEnabled;
-export const isBlogPostRouteEnabled = APP_BLOG.post.isEnabled;
-export const isBlogCategoryRouteEnabled = APP_BLOG.category.isEnabled;
-export const isBlogTagRouteEnabled = APP_BLOG.tag.isEnabled;
+
 
 export const blogListRobots = APP_BLOG.list.robots;
 export const blogPostRobots = APP_BLOG.post.robots;
@@ -199,7 +194,6 @@ export const getStaticPathsBlogList = async (
   user: string,
   size = blogPostsPerPage
 ) => {
-  if (!isBlogEnabled || !isBlogListRouteEnabled) return [];
   return paginate(await fetchPosts(user), {
     params: { blog: BLOG_BASE || undefined },
     pageSize: size,
@@ -208,7 +202,6 @@ export const getStaticPathsBlogList = async (
 
 /** */
 export const getStaticPathsBlogPost = async (user: string) => {
-  if (!isBlogEnabled || !isBlogPostRouteEnabled) return [];
   return (await fetchPosts(user)).flatMap((post) => ({
     params: {
       blog: post.permalink,
@@ -223,8 +216,6 @@ export const getStaticPathsBlogCategory = async (
   user: string,
   size = blogPostsPerPage
 ) => {
-  if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
-
   const posts = await fetchPosts(user);
   const categories = {};
   posts.map((post) => {
@@ -249,8 +240,6 @@ export const getStaticPathsBlogTag = async (
   user: string,
   size = blogPostsPerPage
 ) => {
-  if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
-
   const posts = await fetchPosts(user);
   const tags = {};
   posts.map((post) => {

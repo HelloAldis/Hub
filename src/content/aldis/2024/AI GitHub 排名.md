@@ -1,7 +1,7 @@
 ---
 author: Alids
 publishDate: 2024-06-25
-title: AI GitHub 排名
+title: GitHub AI 项目排名
 excerpt: GitHub上面AI方面的项目很多有，为AI相关项目进行打分并排名，可以进行很好的参考，帮助学习AI知识。
 image: ~/assets/images/aldis/2024/ai.png
 category: AI

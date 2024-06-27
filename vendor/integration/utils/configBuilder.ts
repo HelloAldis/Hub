@@ -32,12 +32,9 @@ export interface I18NConfig {
   dateFormatter?: Intl.DateTimeFormat;
 }
 export interface AppBlogConfig {
-  isEnabled: boolean;
   postsPerPage: number;
-  isRelatedPostsEnabled: boolean;
   relatedPostsCount: number;
   post: {
-    isEnabled: boolean;
     permalink: string;
     robots: {
       index: boolean;
@@ -45,7 +42,6 @@ export interface AppBlogConfig {
     };
   };
   list: {
-    isEnabled: boolean;
     pathname: string;
     robots: {
       index: boolean;
@@ -53,7 +49,6 @@ export interface AppBlogConfig {
     };
   };
   category: {
-    isEnabled: boolean;
     pathname: string;
     robots: {
       index: boolean;
@@ -61,7 +56,6 @@ export interface AppBlogConfig {
     };
   };
   tag: {
-    isEnabled: boolean;
     pathname: string;
     robots: {
       index: boolean;
@@ -129,12 +123,9 @@ const getI18N = (config: Config) => {
 
 const getAppBlog = (config: Config) => {
   const _default = {
-    isEnabled: false,
     postsPerPage: 6,
-    isRelatedPostsEnabled: false,
     relatedPostsCount: 4,
     post: {
-      isEnabled: true,
       permalink: '/blog/%slug%',
       robots: {
         index: true,
@@ -142,7 +133,6 @@ const getAppBlog = (config: Config) => {
       },
     },
     list: {
-      isEnabled: true,
       pathname: 'blog',
       robots: {
         index: true,
@@ -150,7 +140,6 @@ const getAppBlog = (config: Config) => {
       },
     },
     category: {
-      isEnabled: true,
       pathname: 'category',
       robots: {
         index: true,
@@ -158,7 +147,6 @@ const getAppBlog = (config: Config) => {
       },
     },
     tag: {
-      isEnabled: true,
       pathname: 'tag',
       robots: {
         index: false,

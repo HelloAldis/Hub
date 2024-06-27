@@ -5,13 +5,6 @@ import { fetchPosts } from '~/utils/blog';
 import { getBlogPostPermalink } from '~/utils/permalinks';
 
 export const GET = async () => {
-  if (!APP_BLOG.isEnabled) {
-    return new Response(null, {
-      status: 404,
-      statusText: 'Not found',
-    });
-  }
-
   const aldisPosts = await fetchPosts('aldis');
   const aldisItems = aldisPosts.map((post) => ({
     link: getBlogPostPermalink(post.permalink, 'aldis'),

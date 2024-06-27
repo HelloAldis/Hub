@@ -1,7 +1,7 @@
 ---
 author: Alids
 publishDate: 2024-06-24
-title: Web3 GitHub 排名
+title: GitHub Web3 项目排名
 excerpt: 利用python脚本为GitHub上面得web3相关项目进行打分并排名，帮助学习web3知识参考。
 image: ~/assets/images/aldis/2024/web3-2.png
 category: Web3

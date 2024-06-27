@@ -15,16 +15,11 @@ const { post, user } = Astro.props;
 
 const relatedPosts = post.tags ? await getRelatedPosts(post, user, 4) : [];
 ---
-
-{
-  APP_BLOG.isRelatedPostsEnabled ? (
-    <BlogHighlightedPosts
-      classes={{ container: 'pt-0 lg:pt-0 md:pt-0' }}
-      title="Related Posts"
-      linkText="View All Posts"
-      linkUrl={getBlogPermalink(user)}
-      postIds={relatedPosts.map((post) => post.id)}
-      user={user}
-    />
-  ) : null
-}
+<BlogHighlightedPosts
+classes={{ container: 'pt-0 lg:pt-0 md:pt-0' }}
+title="Related Posts"
+linkText="View All Posts"
+linkUrl={getBlogPermalink(user)}
+postIds={relatedPosts.map((post) => post.id)}
+user={user}
+/>

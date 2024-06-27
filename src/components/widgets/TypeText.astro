@@ -1,28 +1,42 @@
 ---
-
+import { Image } from 'astro:assets';
+import saturn from "~/assets/images/saturn.png";
 ---
 
-<section class="relative not-prose">
+<section class="relative not-prose h-screen">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 text-md text-center font-medium">
     <span id="type-text" class="font-bold"> </span>
   </div>
+  <div class="flex justify-center">
+    <Image
+      width={960}
+      src={saturn} 
+      alt="saturn" 
+      class="">
+    </Image> 
+  </div>
+
 </section>
 
 <script is:inline>
-  var app = document.getElementById('type-text');
+    const initWriter = () => {
+    var app = document.getElementById('type-text');
 
-  var typewriter = new Typewriter(app, {
-    strings: [
-      '只有技术是不够的！<i> —— 来自Aldis</i>',
-      'You can or can not，you are right！<i>—— From Camila</i>',
-      '找到正确的方法，开始做，保持专注！<i>—— 来自Seven</i>',
-      '凡事豫则立，不豫则废！<i>—— 来自《礼记·中庸》</i>',
-      '你不可能让所有人满意，也不可能永远让某个人满意，所以做自己！<i>—— 来自Aldis</i>',
-    ],
-    pauseFor: 3000,
-    loop: true,
-    delay: 100,
-    autoStart: true,
-    cursor: '▂',
-  });
+    var typewriter = new Typewriter(app, {
+      strings: [
+        '只有技术是不够的！<i> —— 来自Aldis</i>',
+        'You can or can not，you are right！<i>—— From Camila</i>',
+        '找到正确的方法，开始做，保持专注！<i>—— 来自Seven</i>',
+        '凡事豫则立，不豫则废！<i>—— 来自《礼记·中庸》</i>',
+        '你不可能让所有人满意，也不可能永远让某个人满意，所以做自己！<i>—— 来自Aldis</i>',
+      ],
+      pauseFor: 3000,
+      loop: true,
+      delay: 100,
+      autoStart: true,
+      cursor: '▂',
+    });
+  }
+  initWriter();
+  document.addEventListener('astro:after-swap', initWriter);
 </script>
