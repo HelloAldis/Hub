@@ -1,5 +1,5 @@
 ---
-import { blogTagRobots, getCategories } from '~/utils/blog';
+import { getCategories } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/blog/Headline.astro';
@@ -7,10 +7,6 @@ import Headline from '~/components/blog/Headline.astro';
 const categories = await getCategories('seven');
 const metadata = {
   title: "Seven's Showcase Categories",
-  robots: {
-    index: blogTagRobots?.index,
-    follow: blogTagRobots?.follow,
-  },
 };
 ---
 

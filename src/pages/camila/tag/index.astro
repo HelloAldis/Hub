@@ -1,5 +1,5 @@
 ---
-import { blogTagRobots, getTags } from '~/utils/blog';
+import { getTags } from '~/utils/blog';
 
 import Layout from '~/layouts/PageLayout.astro';
 import Headline from '~/components/blog/Headline.astro';
@@ -8,10 +8,6 @@ const tags = await getTags('camila');
 
 const metadata = {
   title: "Camila's Image Tags",
-  robots: {
-    index: blogTagRobots?.index,
-    follow: blogTagRobots?.follow,
-  },
 };
 ---
 

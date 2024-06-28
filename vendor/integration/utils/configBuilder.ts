@@ -36,31 +36,15 @@ export interface AppBlogConfig {
   relatedPostsCount: number;
   post: {
     permalink: string;
-    robots: {
-      index: boolean;
-      follow: boolean;
-    };
   };
   list: {
     pathname: string;
-    robots: {
-      index: boolean;
-      follow: boolean;
-    };
   };
   category: {
     pathname: string;
-    robots: {
-      index: boolean;
-      follow: boolean;
-    };
   };
   tag: {
     pathname: string;
-    robots: {
-      index: boolean;
-      follow: boolean;
-    };
   };
 }
 export interface AnalyticsConfig {
@@ -127,31 +111,15 @@ const getAppBlog = (config: Config) => {
     relatedPostsCount: 4,
     post: {
       permalink: '/blog/%slug%',
-      robots: {
-        index: true,
-        follow: true,
-      },
     },
     list: {
       pathname: 'blog',
-      robots: {
-        index: true,
-        follow: true,
-      },
     },
     category: {
       pathname: 'category',
-      robots: {
-        index: true,
-        follow: true,
-      },
     },
     tag: {
       pathname: 'tag',
-      robots: {
-        index: false,
-        follow: true,
-      },
     },
   };
 

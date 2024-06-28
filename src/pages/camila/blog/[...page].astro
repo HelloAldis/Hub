@@ -7,7 +7,7 @@ import PaginationNew from '~/components/blog/PaginationNew.astro';
 import Button from '~/components/ui/Button.astro';
 // import PostTags from "~/components/blog/Tags.astro";
 
-import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
+import { getStaticPathsBlogList } from '~/utils/blog';
 import GalleryList from '~/components/blog/GalleryList.astro';
 
 export const prerender = true;
@@ -25,10 +25,6 @@ const basePath = '/camila/blog/';
 
 const metadata = {
   title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
-  robots: {
-    index: blogListRobots?.index && currentPage === 1,
-    follow: blogListRobots?.follow,
-  },
   openGraph: {
     type: 'blog',
   },
