@@ -1,16 +1,8 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
-import Hero from '~/components/widgets/Hero.astro';
 import TypeText from '~/components/widgets/TypeText.astro';
-import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
 import TwinklingStars from '~/components/widgets/TwinklingStars.astro';
 import MeteorShower from '~/components/widgets/MeteorShower.astro';
 
@@ -43,23 +35,9 @@ const metadata = {
   </div>
 
   <script is:inline src="/js/bg.js"></script>
-
-  <!-- Hero Widget ******************* -->
   <script is:inline src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
   <TypeText />
-  <!-- Note Widget ******************* -->
 
-  <!-- Features Widget *************** -->
-
-  <!-- Content Widget **************** -->
-
-  <!-- Content Widget **************** -->
-
-  <!-- Content Widget **************** -->
-
-  <!-- Steps Widget ****************** -->
-
-  <!-- Features2 Widget ************** -->
   <Features2
   title="AI Top 10"
   subtitle="Github上面最热门的AI项目排行榜单，点击了解更多 »"
@@ -194,8 +172,6 @@ const metadata = {
 </Fragment>
 </Features2>
 
-  <!-- HighlightedPosts Widget ******* -->
-
   <BlogLatestPosts
     title="继续寻找更多Aldis的博客"
     information={`记录极客人的日常心得，主要包含计算机技术、AI、区块链、Web3、元宇宙、编程技术、硬件设计、书法创作等。`}
@@ -214,10 +190,4 @@ const metadata = {
                 `}
     user="seven"
   />
-
-  <!-- FAQs Widget ******************* -->
-
-  <!-- Stats Widget ****************** -->
-
-  <!-- CallToAction Widget *********** -->
 </Layout>

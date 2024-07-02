@@ -99,7 +99,7 @@ import { UI } from 'astrowind:config';
         case 'qq':
           href = `http://connect.qq.com/widget/shareqq/index.html?url=${url}&title=${text}"`;
           break;
-        case 'copy':
+        case 'copy': {
           navigator.clipboard.writeText(elem.getAttribute('data-aw-url') + '  ' + elem.getAttribute('data-aw-text'));
           const copy = elem.querySelector('.copy-icon');
           const check = elem.querySelector('.copy-check-icon');
@@ -111,6 +111,7 @@ import { UI } from 'astrowind:config';
           }, 2000);
 
           return;
+        }
         default:
           return;
       }

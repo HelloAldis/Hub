@@ -42,7 +42,7 @@ const metadata = merge(
 ---
 
 <Layout metadata={metadata}>
-  <GalleryPost post={{ ...post, image: image }} url={url} , user="camila">
+  <GalleryPost post={{ ...post, image: image }} url={url} user="camila">
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </GalleryPost>
   <ToBlogLink user="camila" />
