@@ -12,14 +12,15 @@ import saturn from "~/assets/images/saturn.png";
       width={960}
       src={saturn} 
       alt="saturn" 
-      class="">
+      loading="lazy"
+      decoding="async">
     </Image> 
   </div>
 
 </section>
 
 <script is:inline>
-    const initWriter = () => {
+    function initWriter () {
     const app = document.getElementById('type-text');
 
     new Typewriter(app, {

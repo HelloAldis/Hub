@@ -24,11 +24,7 @@ const link = getBlogPostPermalink(post.permalink, user);
     <Image
       src={image}
       class="w-full md:h-full object-cover shadow-lg bg-gray-400 dark:bg-slate-700"
-      widths={[400, 900]}
-      width={400}
-      sizes="(max-width: 900px) 400px, 900px"
       alt={post.title}
-      layout="cover"
       loading="lazy"
       decoding="async"
     />
